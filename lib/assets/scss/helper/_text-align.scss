@@ -1,0 +1,26 @@
+/*
+===
+2.3 Text Align
+===
+
+### Text Align
+
+文字の揃えの方向を中央揃え、左揃え、もしくは右揃えにします。
+
+```html
+<div class="h-tc">Text Align Center</div>
+<div class="h-tl">Text Align Left</div>
+<div class="h-tr">Text Align Right</div>
+```
+
+*/
+
+.h-tc {
+	text-align: center !important;
+}
+.h-tl {
+	text-align: left !important;
+}
+.h-tr {
+	text-align: right !important;
+}

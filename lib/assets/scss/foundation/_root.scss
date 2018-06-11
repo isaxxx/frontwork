@@ -1,0 +1,40 @@
+/*
+===
+1.2 Root Element
+===
+
+### Root Element
+
+[_config.scss](index.html#0.2)のいくつかの変数が`html`要素に適用されます。
+
+*/
+
+html {
+	font-family: $root-font-family;
+	line-height: $root-line-height;
+	color: $root-font-color;
+	background-color: $root-background-color;
+	word-wrap : break-word;
+  overflow-wrap : break-word;
+}
+
+body:after {
+	display: none;
+}
+
+html,
+body {
+	min-height: 100%;
+}
+
+@include media-query-asc {
+
+	html {
+		font-size: get-value($root-font-size-list) / 16px * 100 * 1%;
+	}
+
+	body:after {
+		content: "#{$query}";
+	}
+
+}

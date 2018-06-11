@@ -1,0 +1,52 @@
+/*
+===
+4.7 Parallax
+===
+
+### Parallax
+
+Parallax効果を付与します。
+
+#### HTML
+
+要素がWindow画面に表示されている間、`data-x``data-y`属性の値の分だけ移動します。
+`data-x`属性は横方向、`data-y`属性は縦方向に移動します。
+Animationをなめらかにするために、対象要素の`position`Propertyの値を`absolute`にすることが推奨されます。
+
+```html
+<div class="js-parallax" data-x="100" data-y="100">
+  <img src="/assets/images/sample.jpg" alt="" />
+</div>
+```
+
+#### JavaScript
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollWeightLevel = 50;
+  const animationDuration = 500;
+  const animationTimingFunction = 'cubic-bezier(0, 0.54, 0.20, 1.00)';
+  new Frontwork.Parallax(scrollWeightLevel, animationDuration, animationTimingFunction);
+});
+```
+
+*/
+
+@keyframes PARALLAX_LOADED {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.js-parallax {
+
+  visibility: hidden;
+
+  &.is-loaded {
+    visibility: visible;
+    animation: PARALLAX_LOADED .2s $easeOutQuint 0s;
+  }
+}

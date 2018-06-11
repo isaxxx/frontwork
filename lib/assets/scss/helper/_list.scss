@@ -1,0 +1,37 @@
+/*
+===
+2.5 List Style Reset
+===
+
+### List Style Reset
+
+User Agentで指定されている`ol`、`ul`要素のStyleをResetします。
+
+```html
+<ol class="h-nl">
+  <li>List Item</li>
+  <li>List Item</li>
+  <li>List Item</li>
+</ol>
+<ul class="h-nl">
+  <li>List Item</li>
+  <li>List Item</li>
+  <li>List Item</li>
+</ul>
+```
+
+#### Mixin
+
+次のように記述することで同様の効果を持つMixinを利用できます。
+
+```scss
+ol, ul {
+  @include no-list;
+}
+```
+
+*/
+
+.h-nl {
+	@include no-list;
+}

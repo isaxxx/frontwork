@@ -1,0 +1,37 @@
+/*
+===
+3.3 Multi Column Layout
+===
+
+### Multi Column Layout
+
+CSS3のMulti Column Layoutを適用します。
+Modifierを利用して段組数を指定します。
+`column-gap`、`column-rule`Propertyは個別に設定してください。
+
+#### Size Modifier
+
+段組数を指定します。
+
+```html
+<p class="l-mc l-mc--2@0">2 Columns</p>
+<p class="l-mc l-mc--3@0">3 Columns</p>
+```
+
+*/
+
+.l-mc {
+	column-count: auto;
+}
+
+@include media-query-asc {
+
+	.l-mc--2\@#{$query} {
+		column-count: 2;
+	}
+
+	.l-mc--3\@#{$query} {
+		column-count: 3;
+	}
+  
+}

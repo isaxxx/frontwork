@@ -1,0 +1,305 @@
+/*
+===
+3.1 Columns
+===
+
+### Columns
+
+ColumnsはLayout Categoryの中核を担っています。
+これらを利用することでPage全体のLayoutを構築することができます。
+
+#### Site
+
+`body`要素直下の要素に使用します。
+このClassは、例えばJavaScriptを利用してPage全体にAnimationを追加する場合などに利用します。
+
+```html
+<body>
+	<div class="l-st">Page</div>
+</body>
+```
+
+#### Container
+
+[_config.scss](index.html#0.2)の`$container-size-list`の設定が反映されています。
+
+```html
+<body>
+	<div class="l-st">
+		<div class="l-cn">Width: Container Size</div>
+	</div>
+</body>
+```
+
+##### Full Size Modifier
+
+横幅を100%に設定します。
+
+```html
+<body>
+	<div class="l-st">
+		<div class="l-cn l-cn--fl@0">Width: 100%</div>
+	</div>
+</body>
+```
+
+#### Row & Column
+
+RowとColumnはそれぞれを組み合わせて利用します。
+Containerの直下の要素にRowを使用し、Rowの直下の要素にColumnを使用します。
+またColumnの直下にRowを使用することで、Nestして利用することができます。
+
+RowとColumnには、[_config.scss](index.html#0.2)の`$gatter-size-list`の設定が反映されています。
+いくつかのModifierを追加することで、Layoutを詳細に形成することができます。
+
+```html
+<body>
+	<div class="l-st">
+		<div class="l-cn">
+			<div class="l-rw">
+				<div class="l-cl">Column</div>
+				<div class="l-cl">Column</div>
+				<div class="l-cl">
+					<div class="l-rw">
+						<div class="l-cl">Column</div>
+						<div class="l-cl">Column</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+```
+
+##### Size Modifier - Grid System (Column)
+
+[_config.scss](index.html#0.2)の`$grid-unit`の値が反映されたGrid Systemを利用できます。
+例えば`$grid-unit: 12`とすると、Column ClassのSize Modifierで指定する数の合計が1列で12となるようにLayoutします。
+[BootStrap](https://getbootstrap.com/)や[Foundation](https://foundation.zurb.com/)など多くのCSS Frameworkで採用されているGrid Systemとほぼ同様の仕組みです。
+
+```html
+<body>
+	<div class="l-st">
+		<div class="l-cn">
+			<div class="l-rw">
+				<div class="l-cl l-cl--4@0">Column</div>
+				<div class="l-cl l-cl--4@0">Column</div>
+				<div class="l-cl l-cl--4@0">
+					<div class="l-rw">
+						<div class="l-cl l-cl--6@0">Column</div>
+						<div class="l-cl l-cl--6@0">Column</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+```
+
+##### Offset Modifier (Column)
+
+Grid Systemに準じて左側、もしくは右側にOffsetを追加できます。
+
+```html
+<body>
+	<div class="l-st">
+		<div class="l-cn">
+			<div class="l-rw">
+				<div class="l-cl l-cl--3@0 l-cl--ml3@0">Column</div>
+				<div class="l-cl l-cl--3@0 l-cl--mr3@0">Column</div>
+			</div>
+		</div>
+	</div>
+</body>
+```
+
+##### No Gatter Modifier (Row & Column)
+
+Gatter Sizeを削除します。
+
+```html
+<div class="l-cn">
+	<div class="l-rw l-rw--ng@0">
+		<div class="l-cl l-cl--ng@0">No Gatter Row & Column</div>
+	</div>
+</div>
+```
+
+##### Flexible Box Modifier (Row & Column)
+
+CSS3のFlexible Boxを適用します。
+
+```html
+<div class="l-cn">
+	<div class="l-rw l-rw--fx@0">
+		<div class="l-cl l-cl--6@0">Flexible Item</div>
+		<div class="l-cl l-cl--6@0">Flexible Item</div>
+	</div>
+</div>
+```
+
+###### Direction
+
+Flexible Itemの並びの方向を縦、もしくは横並びにします。
+
+```html
+<div class="l-cn">
+	<div class="l-rw l-rw--fx@0 l-rw--fx--hr@0">
+		<div class="l-cl l-cl--6@0">Side by Side (Default)</div>
+		<div class="l-cl l-cl--6@0">Side by Side (Default)</div>
+	</div>
+	<div class="l-rw l-rw--fx@0 l-rw--fx--vt@0">
+		<div class="l-cl l-cl--6@0">Vertical Row (Default)</div>
+		<div class="l-cl l-cl--6@0">Vertical Row (Default)</div>
+	</div>
+</div>
+```
+
+###### Align Item
+
+Flexible Itemの縦方向の揃えの位置を上揃え、もしくは中央揃えにします。
+
+```html
+<div class="l-cn">
+	<div class="l-rw l-rw--fx@0 l-rw--fx--tp@0">
+		<div class="l-cl l-cl--6@0">Align Top (Default)</div>
+		<div class="l-cl l-cl--6@0">Align Top (Default)</div>
+	</div>
+	<div class="l-rw l-rw--fx@0 l-rw--fx--md@0">
+		<div class="l-cl l-cl--6@0">Align Middle</div>
+		<div class="l-cl l-cl--6@0">Align Middle</div>
+	</div>
+</div>
+```
+
+###### Order
+
+Flexible Itemの表示順の優先順位を指定します。
+
+```html
+<div class="l-cn">
+	<div class="l-rw l-rw--fx@0">
+		<div class="l-cl l-cl--fx--od@0">Priority 0 (Default)</div>
+		<div class="l-cl l-cl--fx--op@0">Priority +1</div>
+		<div class="l-cl l-cl--fx--om@0">Priority -1</div>
+	</div>
+</div>
+```
+
+*/
+
+.l-st,
+.l-cn,
+.l-rw,
+.l-cl {
+	display: block;
+	min-height: 0;
+}
+
+.l-st,
+.l-cn,
+.l-rw {
+	@include clearfix;
+}
+
+.l-cn {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.l-cl {
+	width: 100%;
+	float: left;
+}
+
+@include media-query-asc {
+
+	.l-st {
+		min-width: get-value($container-size-list);
+	}
+
+	.l-cn {
+		width: get-value($container-size-list);
+		padding-right: get-value($gatter-size-list);
+		padding-left: get-value($gatter-size-list);
+	}
+
+	.l-rw {
+		margin-right: -(get-value($gatter-size-list));
+		margin-left: -(get-value($gatter-size-list));
+		padding-left: get-value($gatter-size-list) / 2;
+		padding-right: get-value($gatter-size-list) / 2;
+	}
+
+	.l-cl {
+		padding-right: get-value($gatter-size-list) / 2;
+		padding-left: get-value($gatter-size-list) / 2;
+	}
+
+	.l-cn--fl\@#{$query} {
+		width: 100%;
+	}
+
+	.l-rw--ng\@#{$query},
+	.l-cl--ng\@#{$query} {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	@for $i from 1 through $grid-unit {
+
+		.l-cl--#{$i}\@#{$query} {
+			width: 100 / $grid-unit * $i * 1%;
+		}
+
+	}
+
+	@for $i from 0 through $grid-unit {
+
+		.l-cl--ml#{$i}\@#{$query} {
+			margin-left: 100 / $grid-unit * $i * 1%;
+		}
+
+		.l-cl--mr#{$i}\@#{$query} {
+			margin-right: 100 / $grid-unit * $i * 1%;
+		}
+
+	}
+
+	.l-rw--fx\@#{$query} {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	// default
+	.l-rw--fx--hr\@#{$query} {
+		flex-direction: row;
+	}
+
+	.l-rw--fx--vt\@#{$query} {
+		flex-direction: column;
+	}
+
+	// default
+	.l-rw--fx--tp\@#{$query} {
+		align-items: stretch;
+	}
+
+	.l-rw--fx--md\@#{$query} {
+		align-items: center;
+	}
+
+	// default
+	.l-cl--fx--od\@#{$query} {
+		order: 0;
+	}
+
+	.l-cl--fx--op\@#{$query} {
+		order: 1;
+	}
+
+	.l-cl--fx--om\@#{$query} {
+		order: -1;
+	}
+
+}

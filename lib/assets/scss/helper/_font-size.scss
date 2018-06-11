@@ -1,0 +1,40 @@
+/*
+===
+2.8 Font Size
+===
+
+### Font Size
+
+それぞれの見出し要素と同様のFont Sizeを適用します。
+
+```html
+<p class="h-h1">Same Font Size as H1 Element</p>
+<p class="h-h2">Same Font Size as H2 Element</p>
+<p class="h-h3">Same Font Size as H3 Element</p>
+<p class="h-h4">Same Font Size as H4 Element</p>
+<p class="h-h5">Same Font Size as H5 Element</p>
+<p class="h-h6">Same Font Size as H6 Element</p>
+```
+
+*/
+
+@include media-query-asc {
+	.h-h1 {
+		font-size: get-value($h1-font-size-list);
+	}
+	.h-h2 {
+		font-size: get-value($h2-font-size-list);
+	}
+	.h-h3 {
+		font-size: get-value($h3-font-size-list);
+	}
+	.h-h4 {
+		font-size: get-value($h4-font-size-list);
+	}
+	.h-h5 {
+		font-size: get-value($h5-font-size-list);
+	}
+	.h-h6 {
+		font-size: get-value($h5-font-size-list);
+	}
+}

@@ -1,0 +1,28 @@
+/*
+===
+2.7 Ellipsis
+===
+
+### Ellipsis
+
+要素の横幅からはみ出した文字を省略し、Textを1行に収めます。
+
+```scss
+<p class="h-el">Ellipsis Text</p>
+```
+
+#### Mixin
+
+次のように記述することで同様の効果を持つMixinを利用できます。
+
+```scss
+p {
+  @include ellipsis;
+}
+```
+
+*/
+
+.h-el {
+  @include ellipsis;
+}

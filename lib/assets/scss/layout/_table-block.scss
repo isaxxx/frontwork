@@ -1,0 +1,122 @@
+/*
+===
+3.2 Table Block
+===
+
+### Table Block
+
+Table要素とそれに関連する要素すべての`display`Propertyの値を`block`に変更します。
+
+```html
+<table class="l-tb">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>01</th>
+      <td>Taro</td>
+      <td>Tanaka</td>
+    </tr>
+    <tr>
+      <th>02</th>
+      <td>Haruko</td>
+      <td>Sato</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+#### Reset Modifier
+
+StyleをResetするModifierが用意されています。
+
+```html
+<table class="l-tb l-tb--rs@0">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>01</th>
+      <td>Taro</td>
+      <td>Tanaka</td>
+    </tr>
+    <tr>
+      <th>02</th>
+      <td>Haruko</td>
+      <td>Sato</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+*/
+
+.l-tb {
+	&,
+	thead,
+	tbody,
+	tfoot,
+	tr,
+	th,
+	td,
+	caption,
+	colgroup,
+	col {
+		display: block;
+	}
+}
+
+@include media-query-asc {
+
+	.l-tb--rs\@#{$query} {
+
+		& {
+			display: table;
+		}
+
+		thead {
+			display: table-header-group;
+		}
+
+		tbody {
+			display: table-row-group;
+		}
+
+		tfoot {
+			display: table-footer-group;
+		}
+
+		tr {
+			display: table-row;
+		}
+
+		th,
+		td {
+			display: table-cell;
+		}
+
+		caption {
+			display: table-caption;
+		}
+
+		colgroup {
+			display: table-column-group;
+		}
+
+		col {
+			display: table-column;
+		}
+
+	}
+
+}

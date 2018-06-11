@@ -1,0 +1,49 @@
+/*
+===
+2.9 Others
+===
+
+### Others
+
+#### Background Image
+
+背景画像が設定されている要素の背景画像の表示方法を設定します。
+`background-image`Propertyは別途設定してください。
+
+```html
+<div class="h-bc">Background Cover</div>
+<div class="h-bf">Background Fixed</div>
+```
+
+#### Print
+
+印刷時に要素を非表示にします。
+
+```html
+<div class="h-np">Hide When Printing</div>
+```
+
+*/
+
+.h-bc {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  overflow: hidden;
+}
+
+.h-bf {
+  background-attachment: fixed;
+}
+
+.is-touch-device {
+  .h-bf {
+    background-attachment: scroll;
+  } 
+}
+
+@media print {
+	.h-np {
+		display: none !important;
+	}
+}

@@ -1,0 +1,30 @@
+/*
+===
+2.6 Button Style Reset
+===
+
+### Button Style Reset
+
+`input[type="button"]`、`button`などのButtonを示す要素のStyleをResetします。
+
+```html
+<button class="h-bt"></button>
+<input class="h-bt" type="button" />
+<a class="h-bt"></a>
+```
+
+#### Mixin
+
+次のように記述することで同様の効果を持つMixinを利用できます。
+
+```scss
+button {
+  @include button;
+}
+```
+
+*/
+
+.h-bt {
+	@include button;
+}

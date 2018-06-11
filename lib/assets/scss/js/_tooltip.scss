@@ -1,0 +1,60 @@
+/*
+===
+4.5 Tooltip
+===
+
+### Tooltip
+
+Tooltipを生成します。
+
+#### HTML
+
+```html
+<li class="js-tooltip">
+  <a href="#">Tooltip</a>
+  <ul class="js-tooltip__child">
+    <li>
+      <a href="#">Tooltip Child</a>
+    </li>
+  </ul>
+</li>
+```
+
+[Accordion](section-4.html#4.4)と組み合わせて、画面幅が大きいときにはTooltip、小さいときには[Accordion](section-4.html#4.4)のように実装できます。
+
+```html
+<li class="js-tooltip js-accordion">
+  <a href="#">Tooltip</a>
+  <ul class="js-tooltip__child js-accordion__content">
+    <li>
+      <a href="#">Tooltip Child</a>
+    </li>
+  </ul>
+  <a class="js-accordion__switch" href="#" aria-label="TOGGLE"></a>
+</li>
+```
+
+#### JavaScript
+
+第一引数に、Tooltipを表示する最小の[Media Query Mixin](index.html#)の`$query`変数の数を指定します。
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const minQuery = 1;
+  new Frontwork.Tooltip(minQuery);
+});
+```
+
+#### SCSS
+
+Tooltipの見た目を補助するMixinが用意されています。
+
+```scss
+@include media-query-asc {
+  @if $query == 1 {
+    @include tooltip;
+  }
+}
+```
+
+*/

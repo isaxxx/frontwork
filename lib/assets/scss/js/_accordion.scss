@@ -1,0 +1,58 @@
+/*
+===
+4.4 Accordion
+===
+
+### Accordion
+
+Accordionを生成します。
+
+#### HTML
+
+```html
+<div class="accordion">
+<a href="#" class="accordion__switch" aria-label="TOGGLE"></a>
+<ul class="accordion__content">
+  <li>
+    <a href="#">Accordion Content</a>
+  </li>
+</ul>
+```
+
+#### JavaScript
+
+第一引数に、Accordionを表示する最大の[Media Query Mixin](index.html#)の`$query`変数の数を指定します。
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const maxQuery = 0;
+  new Frontwork.Accordion(maxQuery);
+});
+```
+
+#### SCSS
+
+`accordion__switch`ClassのStyleを補助するMixinが用意されています。
+`accordion__content`Classは任意の`$query`変数で非表示にしてください。
+
+```scss
+@include media-query-desc {
+  @if $query == 0 {
+    .accordion__switch {
+      @include accordion-icon(
+        $form: plus, // plus or arrow
+        $container-width: 50px, $container-height: 50px, $icon-skew: 10deg,
+        $icon-color: #323232, $icon-line-weight: 2px, $icon-size: 20px,
+        $transition-duration: .1s, $transition-timing-function: ease-in-out,
+        $toggle-class: is-open
+      );
+    }
+    // close accordion content
+    .accordion__content {
+      display: none;
+    }
+  }
+}
+```
+
+*/

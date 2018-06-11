@@ -1,0 +1,23 @@
+/*
+===
+2.4 Remove Margin
+===
+
+### Remove Margin
+
+上方向、もしくは下方向のMarginを削除します。
+
+```html
+<div class="h-mt">Remove Margin Top</div>
+<div class="h-mb">Remove Margin Bottom</div>
+```
+
+*/
+
+.h-mt {
+	margin-top: 0 !important;
+}
+
+.h-mb {
+	margin-bottom: 0 !important;
+}

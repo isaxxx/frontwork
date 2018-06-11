@@ -1,0 +1,51 @@
+{
+  "name": "frontwork",
+  "version": "1.0.0",
+  "description": "Tools for Front End Web Developers Work.",
+  "main": "./index.js",
+  "bin": {
+    "frontwork": "./bin/frontwork"
+  },
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "keywords": [
+    "front-end"
+  ],
+  "engines": {
+    "node": ">=6.11.4"
+  },
+  "author": "isaxxx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isaxxx/frontwork"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^8.5.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.4",
+    "chalk": "^2.4.1",
+    "cpx": "^1.5.0",
+    "ejss": "^1.0.0",
+    "glob": "^7.1.2",
+    "iconfont-gen": "^1.0.1",
+    "imagemin": "^5.3.1",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-pngquant": "^5.1.0",
+    "node-sass": "^4.9.0",
+    "path": "^0.12.7",
+    "postcss": "^6.0.22",
+    "rimraf": "^2.6.2",
+    "styleguide-lite": "^1.0.5",
+    "update-notifier": "^2.5.0",
+    "watch": "^1.0.2",
+    "webpack": "^4.8.3",
+    "yargs": "^11.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0"
+  }
+}

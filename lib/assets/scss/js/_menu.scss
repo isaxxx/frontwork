@@ -1,0 +1,73 @@
+/*
+===
+4.3 Menu
+===
+
+### Menu
+
+Menuを生成します。
+このMenuはPageにひとつしか生成できません。
+
+#### HTML
+
+`js-menu-layer`Classは任意で設置してください。
+
+```html
+<nav class="js-menu" id="menu" role="navigation">
+  <ul class="js-menu__container">
+    <li>
+      <a href="#">Menu</a>
+    </li>
+  </ul>
+</nav>
+<div class="js-menu-layer"></div>
+<a class="js-menu-switch" href="#" aria-controls="menu" aria-label="MENU">
+  <i class="js-menu-switch__icon" aria-hidden="true"></i>
+</a>
+```
+
+#### JavaScript
+
+第一引数に、Menuを表示する最大の[Media Query Mixin](index.html#)の`$query`変数の値を指定します。
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const maxQuery = 0;
+  new Frontwork.Menu(maxQuery);
+});
+```
+
+#### SCSS
+
+Menuの見た目を調整できるMixinが用意されています。
+また`js-menu-switch`と`js-menu-layer`Classの表示は任意の`$query`変数で非表示にしてください。
+
+```scss
+@include media-query-asc {
+  @if $query == 1 {
+    .js-menu-switch,
+    .js-menu-layer {
+      display: none;
+    }
+  }
+}
+
+@include media-query-desc {
+  @if $query == 0 {
+    @include menu (
+      $direction: left, // left or right or top or bottom
+      $is-relative: false, $is-double: false,
+      $container-transition-duration: .3s, $container-transition-timing-function: ease-in-out,
+      $container-width: 100%, $container-max-width: false, $container-min-width: false,
+      $container-height: 100%, $container-max-height: false, $container-min-height: false,
+      $layer-color: rgba(0,0,0,.8),
+      $is-body-fixed: false,
+      $switch-width: 100px, $switch-height: 100px,
+      $switch-transition-duration: .1s, $switch-centerbar-transition-duration: .15s, $switch-transition-timing-function: ease-in-out,
+      $switch-bar-width: 50px, $switch-bar-weight: 6px, $switch-bar-span: 8px, $switch-bar-color: #323232, $switch-bar-color-opened: #fff
+    );
+  }
+}
+```
+
+*/

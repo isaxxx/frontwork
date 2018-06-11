@@ -1,0 +1,71 @@
+/*
+===
+4.6 Pagetop
+===
+
+### Pagetop
+
+Pageの最上部に移動するPagetopを生成します。
+
+#### HTML
+
+```html
+<a class="js-pagetop" href="#top" aria-label="PAGETOP">
+  <i class="js-pagetop__icon" aria-label="hidden"></i>
+</a>
+```
+
+#### JavaScript
+
+第一引数に、Pagetopを表示する最小の[Media Query Mixin](index.html#)の`$query`変数の値を指定します。
+第二引数に、Pagetopを表示する最小のスクロール量を指定します。
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const minQuery = 1;
+  const scrollY = 1000;
+  new Frontwork.Pagetop(minQuery, scrollY);
+});
+```
+
+*/
+
+.js-pagetop {
+  display: block;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: rgba(0,0,0,.8);
+  transform: translate3d(0, 60px, 0);
+  visibility: hidden;
+  transition: transform .5s $easeOutQuint 0s, visibility 0s step-end .5s;
+  z-index: 10000;
+}
+
+.js-pagetop__icon {
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  margin-top: -9px + 4px;
+  margin-left: -9px;
+  border-top: 4px solid rgba(255,255,255,.5);
+  border-left: 4px solid rgba(255,255,255,.5);
+  transform: rotate(45deg);
+}
+
+.js-pagetop:hover .js-pagetop__icon {
+  border-top-color: #fff;
+  border-left-color: #fff;
+}
+
+.is-fixed-pagetop .js-pagetop {
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+  transition: transform .5s $easeOutQuint 0s, visibility 0s step-end 0s;
+}

@@ -1,0 +1,115 @@
+/*
+===
+0.2 Config
+===
+
+### Config
+
+Frontwork CSSを利用するために必要な`./src/scss/app/_config.scss`Fileの中のそれぞれの変数について説明します。
+このFileを編集することで、Application Category以外のCSSを自動生成することが可能です。
+
+#### $root-font-family
+
+`html`要素に適用する`font-family`Propertyを指定します。
+
+#### $root-font-color
+
+`html`要素に適用する`color`Propertyを指定します。
+
+#### $root-background-color
+
+`html`要素に適用する`background-color`Propertyを指定します。
+
+#### $root-line-height
+
+`html`要素に適用する`line-height`Propertyを指定します。
+
+#### $grid-unit
+
+[Layout CategoryのRow Class](section-3.html#3.1)を等分割するGrid SystemのGridの数を指定します。
+
+#### $break-point-list
+
+Break PointをListの形式で指定します。
+単位は`px`とし、昇順で指定します。
+
+#### $container-size-list
+
+[Layout CategoryのContainer Class](section-3.html#3.1)の横幅をBreak PointごとにList形式で指定します。
+例えば、次のように記述します。
+
+```scss
+$break-point-list:          768px, 980px;
+$container-size-list: 100%, 640px, 820px;
+
+// Result
+.l-cn {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .l-cn {
+    width: 640px;
+  }
+}
+
+@media (min-width: 980px) {
+  .l-cn {
+    width: 820px;
+  }
+}
+```
+
+#### $gatter-size-list
+
+[Layout CategoryのRow & Column Class](section-3.html#3.1)のGatter SizeをBreak PointごとにList形式で指定します。
+考え方は`$container-size-list`と同様です。
+
+#### $root-font-size-list
+
+`html`要素に適用する`font-size`PropertyをBreak PointごとにList形式で指定します。
+考え方は`$container-size-list`と同様です。
+
+#### $hx-font-size-list
+
+見出し要素に適用する`font-size`PropertyをBreak PointごとにList形式で指定します。
+考え方は`$container-size-list`と同様です。
+
+*/
+
+// Frontwork CSS Config
+
+// root font family
+$root-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+
+// root font color
+$root-font-color: #333;
+
+// root background color
+$root-background-color: #fff;
+
+// line height
+$root-line-height: 1.6;
+
+// grid system
+$grid-unit: 12;
+
+// break point list
+$break-point-list   :        992px, 1280px;
+
+// container size list
+$container-size-list: 100%,  960px, 1200px;
+
+// gatter size list
+$gatter-size-list   : 12px,   18px,   24px;
+
+// font size list
+$root-font-size-list: 14px,   18px,   24px;
+
+// heading font size list
+$h1-font-size-list  : 36px,   46px,   64px;
+$h2-font-size-list  : 28px,   42px,   52px;
+$h3-font-size-list  : 24px,   30px,   38px;
+$h4-font-size-list  : 18px,   24px,   30px;
+$h5-font-size-list  : 14px,   18px,   24px;
+$h6-font-size-list  : 12px,   16px,   18px;

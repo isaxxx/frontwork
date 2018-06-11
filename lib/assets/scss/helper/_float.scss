@@ -1,0 +1,25 @@
+/*
+===
+2.2 Float
+===
+
+### Float
+
+要素を左、もしくは右に移動するためのFloatを適用します。
+
+```html
+<div class="h-cf">
+	<div class="h-fl">Float Left</div>
+	<div class="h-fr">Float Left</div>
+</div>
+```
+
+*/
+
+.h-fl {
+	float: left !important;
+}
+
+.h-fr {
+	float: right !important;
+}

@@ -1,0 +1,19 @@
+/*
+===
+1.0 Foundation
+===
+
+## Foundation Category
+
+### Vendor CSS
+
+Frontwork CSSでは[normalize.css](https://github.com/necolas/normalize.css)を読み込み、User Agent間の差異を取り除いています。
+
+*/
+
+@import "foundation/normalize";
+@import "foundation/basic";
+@import "foundation/root";
+@import "foundation/font-size";
+@import "foundation/margin";
+@import "foundation/print";

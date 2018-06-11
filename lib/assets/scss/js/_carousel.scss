@@ -1,0 +1,257 @@
+/*
+===
+4.2 Carousel
+===
+
+### Carousel
+
+Carouselを生成します。
+
+#### HTML
+
+```html
+<ul class="carousel">
+  <li>
+    <img src="/assets/images/sample.jpg" alt="" />
+  </li>
+  <li>
+    <img src="/assets/images/sample.jpg" alt="" />
+  </li>
+  <li>
+    <img src="/assets/images/sample.jpg" alt="" />
+  </li>
+</ul>
+```
+
+#### JavaScript
+
+第一引数にNodeを指定し、第二引数にParameterを指定します。
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const $target = document.querySelector('.carousel');
+  const param = {
+    usePager: true,
+    useControls: true,
+    isAuto: true,
+    animationDuration: 500,
+    animationType: 'horizontal', // 'horizontal' or 'fade'
+    pauseTime: 3000,
+    onLoaded: function () {},
+    onMoveBefore: function () {},
+    onMoveAfter: function () {},
+    onResized: function () {}
+  });
+  const carousel = new Frontwork.Carousel($target, param);
+});
+```
+
+#### SCSS
+
+Carouselが読み込まれた時、Slideの切り替わり時に状態変化を示すClassが追加されます。
+それを利用して複雑なAnimationを付与することができます。
+
+```scss
+.carousel,
+.carousel > li {
+  width: 100%;
+  height: 100vh;
+}
+.carousel {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.js-carousel.is-loaded {
+  .carousel {
+    opacity: 1;
+  }
+}
+.carousel > li {
+  transition: transform 0s linear 1s;
+}
+.js-carousel__item.is-show,
+.js-carousel__item.is-leaving {
+  .carousel > li {
+    transform: scale(1.5);
+    transition: transform 10s linear 0s;
+  }
+}
+```
+
+*/
+
+.js-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.js-carousel__slide {
+  position: relative;
+}
+
+.js-carousel__item {
+  width: 100%;
+}
+
+.js-carousel--fade {
+
+  .js-carousel__slide {
+    overflow: hidden;
+  }
+  
+  .js-carousel__item {
+
+    position: absolute;
+    transition-property: opacity, visibility;
+    transition-timing-function: linear, step-end;
+
+    &.is-show {
+      transition-duration: 0s, 0s !important;
+    }
+
+  }
+}
+
+.js-carousel--horizontal {
+
+  transition: transform 0s ease-in-out;
+
+  .js-carousel__slide {
+    display: flex;
+  }
+
+  .js-carousel__item {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+}
+
+.js-carousel__pager,
+.js-carousel__prev,
+.js-carousel__next {
+  font-size: 0;
+}
+
+.js-carousel__pager {
+
+  display: table;
+  table-layout: fixed;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  padding-left: 1px;
+  padding-right: 1px;
+
+  & > li {
+
+    display: table-cell;
+    width: 100%;
+
+    & > a {
+
+      display: block;
+      cursor: pointer;
+      width: 100%;
+      height: 30px;
+      background-color: rgba(255,255,255,.5);
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-top: 22px solid transparent;
+      border-bottom: 3px solid transparent;
+      background-clip: padding-box;
+
+      &:hover {
+        background-color: #fff;
+      }
+
+    }
+
+    &.is-current > a {
+      background-color: #fff;
+    }
+
+  }
+}
+
+.js-carousel__prev,
+.js-carousel__next {
+
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 15%;
+  min-width: 50px;
+  height: 100%;
+  z-index: 4;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    border-left: 4px solid rgba(255,255,255,.5);
+    border-bottom: 4px solid rgba(255,255,255,.5);
+  }
+
+  &:hover:before {
+    border-left-color: #fff;
+    border-bottom-color: #fff;
+  }
+
+}
+
+.js-carousel__prev {
+  left: 0;
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+}
+
+.js-carousel__next {
+  right: 0;
+
+  &:before {
+    transform: rotate(-135deg);
+  }
+
+}
+
+.js-carousel__stop {
+
+  font-size: 14px;
+  line-height: 1.6;
+  display: block;
+  position: absolute;
+  color: rgba(255,255,255,.5);
+  border: 1px solid rgba(255,255,255,.5);
+  padding: 2px 5px;
+  top: 10px;
+  right: 10px;
+  z-index: 6;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+    text-decoration: none;
+  }
+
+}

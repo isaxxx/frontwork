@@ -1,0 +1,140 @@
+/*
+===
+4.9 GoogleMaps
+===
+
+### GoogleMaps
+
+GoogleMapsを生成します。
+
+#### HTML
+
+```html
+<div class=google-maps"></div>
+```
+
+#### JavaScript
+
+第一引数にNode、第二引数にParameterを指定します。
+第二引数のParameterの`pinSizeList`と`zoomLevelList`は[Media Query Mixin](index.html#)の`$query`変数ごとの値を配列で指定します。
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+  const $target = document.querySelector('.youtube');
+  const param = {
+    APIKey: false,
+    center: [35.681224, 139.767073],
+    pinList: [
+      {
+        center: [35.681224, 139.767073],
+        imageURL: 'https://placehold.jp/150x150.png'
+      },
+      {
+        center: [35.685224, 139.763073],
+        imageURL: 'https://placehold.jp/180x180.png'
+      }
+    ],
+    pinSizeList: [3.5, 2],
+    zoomLevelList: [16, 18],
+    style: [
+      {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+      {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+      {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+      {
+        featureType: 'administrative.locality',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry',
+        stylers: [{color: '#263c3f'}]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#6b9a76'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [{color: '#38414e'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#212a37'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#9ca5b3'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [{color: '#746855'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#1f2835'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#f3d19c'}]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'geometry',
+        stylers: [{color: '#2f3948'}]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#d59563'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [{color: '#17263c'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#515c6d'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.stroke',
+        stylers: [{color: '#17263c'}]
+      }
+    ] // exmple: https://developers.google.com/maps/documentation/javascript/styling?hl=ja
+  };
+  new Frontwork.GoogleMaps($target, param);
+});
+```
+
+#### SCSS
+
+要素の表示サイズを指定してください。
+
+```scss
+.google-maps {
+  width: 100%;
+  height: 400px;
+}
+```
+
+*/
+
+.js-google-maps {
+  width: 100%;
+  min-height: 280px;
+}
