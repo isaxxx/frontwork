@@ -1,6 +1,6 @@
 {
   "name": "frontwork",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tools for Front End Web Developers Work.",
   "main": "./index.js",
   "bin": {

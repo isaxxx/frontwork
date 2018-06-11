@@ -236,6 +236,10 @@ Flexible Itemの表示順の優先順位を指定します。
 		padding-left: get-value($gatter-size-list) / 2;
 	}
 
+}
+
+@include media-query-asc {
+
 	.l-cn--fl\@#{$query} {
 		width: 100%;
 	}
