@@ -46,7 +46,7 @@ Options:
 Install the source files.
 
 ```bash
-$ frontwork --init
+$ npx frontwork --init
 ```
 
 ### Watch
@@ -54,7 +54,7 @@ $ frontwork --init
 Watch the source files and processes the task if there are changes.
 
 ```bash
-$ frontwork --watch
+$ npx frontwork --watch
 ```
 
 ### Production
@@ -62,19 +62,19 @@ $ frontwork --watch
 Delete unnecessary files and Compress all files.
 
 ```bash
-$ frontwork --production
+$ npx frontwork --production
 ```
 
 ### Version
 
 ```bash
-$ frontwork --version
+$ npx frontwork --version
 ```
 
 ### Help
 
 ```bash
-$ frontwork --help
+$ npx frontwork --help
 ```
 
 ## Configuration

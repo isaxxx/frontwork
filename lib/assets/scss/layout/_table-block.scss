@@ -62,61 +62,55 @@ StyleをResetするModifierが用意されています。
 */
 
 .l-tb {
-	&,
-	thead,
-	tbody,
-	tfoot,
-	tr,
-	th,
-	td,
-	caption,
-	colgroup,
-	col {
-		display: block;
-	}
+  &,
+  thead,
+  tbody,
+  tfoot,
+  tr,
+  th,
+  td,
+  caption,
+  colgroup,
+  col {
+    display: block;
+  }
 }
 
 @include media-query-asc {
+  .l-tb--rs\@#{$query} {
+    display: table;
 
-	.l-tb--rs\@#{$query} {
+    thead {
+      display: table-header-group;
+    }
 
-		& {
-			display: table;
-		}
+    tbody {
+      display: table-row-group;
+    }
 
-		thead {
-			display: table-header-group;
-		}
+    tfoot {
+      display: table-footer-group;
+    }
 
-		tbody {
-			display: table-row-group;
-		}
+    tr {
+      display: table-row;
+    }
 
-		tfoot {
-			display: table-footer-group;
-		}
+    th,
+    td {
+      display: table-cell;
+    }
 
-		tr {
-			display: table-row;
-		}
+    caption {
+      display: table-caption;
+    }
 
-		th,
-		td {
-			display: table-cell;
-		}
+    colgroup {
+      display: table-column-group;
+    }
 
-		caption {
-			display: table-caption;
-		}
-
-		colgroup {
-			display: table-column-group;
-		}
-
-		col {
-			display: table-column;
-		}
-
-	}
-
+    col {
+      display: table-column;
+    }
+  }
 }

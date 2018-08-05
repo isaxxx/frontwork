@@ -10,31 +10,29 @@
 */
 
 html {
-	font-family: $root-font-family;
-	line-height: $root-line-height;
-	color: $root-font-color;
-	background-color: $root-background-color;
-	word-wrap : break-word;
-  overflow-wrap : break-word;
+  font-family: $root-font-family;
+  line-height: $root-line-height;
+  color: $root-font-color;
+  background-color: $root-background-color;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-body:after {
-	display: none;
+body::after {
+  display: none;
 }
 
 html,
 body {
-	min-height: 100%;
+  min-height: 100%;
 }
 
 @include media-query-asc {
+  html {
+    font-size: get-value($root-font-size-list) / 16px * 100 * 1%;
+  }
 
-	html {
-		font-size: get-value($root-font-size-list) / 16px * 100 * 1%;
-	}
-
-	body:after {
-		content: "#{$query}";
-	}
-
+  body::after {
+    content: quote($query);
+  }
 }

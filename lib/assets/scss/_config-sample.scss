@@ -80,7 +80,7 @@ $container-size-list: 100%, 640px, 820px;
 // Frontwork CSS Config
 
 // root font family
-$root-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+$root-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'Yu Gothic', 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', Meiryo, sans-serif;
 
 // root font color
 $root-font-color: #333;
@@ -95,21 +95,23 @@ $root-line-height: 1.6;
 $grid-unit: 12;
 
 // break point list
-$break-point-list   :        992px, 1280px;
+$break-point-list: 992px, 1280px;
 
 // container size list
-$container-size-list: 100%,  960px, 1200px;
+$container-size-list: 100%, 90%, 1200px;
+$container-min-size-list: 0, 960px, 0;
+$container-max-size-list: none, none, none;
 
 // gatter size list
-$gatter-size-list   : 12px,   18px,   24px;
+$gatter-size-list: 12px, 18px, 24px;
 
 // font size list
-$root-font-size-list: 14px,   18px,   24px;
+$root-font-size-list: 14px, 18px, 24px;
 
 // heading font size list
-$h1-font-size-list  : 36px,   46px,   64px;
-$h2-font-size-list  : 28px,   42px,   52px;
-$h3-font-size-list  : 24px,   30px,   38px;
-$h4-font-size-list  : 18px,   24px,   30px;
-$h5-font-size-list  : 14px,   18px,   24px;
-$h6-font-size-list  : 12px,   16px,   18px;
+$h1-font-size-list: 36px, 46px, 64px;
+$h2-font-size-list: 28px, 42px, 52px;
+$h3-font-size-list: 24px, 30px, 38px;
+$h4-font-size-list: 18px, 24px, 30px;
+$h5-font-size-list: 14px, 18px, 24px;
+$h6-font-size-list: 12px, 16px, 18px;

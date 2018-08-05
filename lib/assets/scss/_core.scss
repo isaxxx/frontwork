@@ -65,13 +65,13 @@ html {
 @media (min-width: 768px) {
   html {
     font-size: 16px;
-  } 
+  }
 }
 
 @media (min-width: 980px) {
   html {
     font-size: 18px;
-  } 
+  }
 }
 ```
 
@@ -96,5 +96,62 @@ Iconfontは`./src/svg/`Directoryに設置したSVG Fileから自動生成され�
 
 */
 
-@import "core/media-query";
-@import "core/cubic-bezier";
+/*
+===
+0.5 Mixins
+===
+
+### Mixins
+
+汎用的なMixinが用意されています。
+
+#### Clearfix
+
+Floatを解除するためのClearfixを適用します。
+
+```scss
+div {
+  @include clearfix;
+}
+```
+
+#### Button Style Reset
+
+`input[type="button"]`、`button`などのButtonを示す要素のStyleをResetします。
+
+```scss
+button {
+  @include button;
+}
+```
+
+#### List
+
+User Agentで指定されている`ol`、`ul`要素のStyleをResetします。
+
+```scss
+ol, ul {
+  @include list;
+}
+```
+
+#### Ellipsis
+
+要素の横幅からはみ出した文字を省略し、Textを1行に収めます。
+
+```scss
+p {
+  @include ellipsis;
+}
+```
+
+*/
+
+@import 'core/media-query-asc';
+@import 'core/media-query-desc';
+@import 'core/get-value';
+@import 'core/cubic-bezier';
+@import 'core/clearfix';
+@import 'core/button';
+@import 'core/list';
+@import 'core/ellipsis';

@@ -1,0 +1,20 @@
+/*
+===
+2.4 Print
+===
+
+### Print
+
+印刷時に要素を非表示にします。
+
+```html
+<div class="h-np">Hide When Printing</div>
+```
+
+*/
+
+@media print {
+  .h-np {
+    display: none !important;
+  }
+}

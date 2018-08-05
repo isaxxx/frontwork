@@ -1,0 +1,4 @@
+@function get-value($list) {
+  $value: nth($list, $query + 1);
+  @return $value;
+}

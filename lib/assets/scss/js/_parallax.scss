@@ -36,17 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
 .js-parallax {
-
   visibility: hidden;
 
   &.is-loaded {
     visibility: visible;
-    animation: PARALLAX_LOADED .2s $easeOutQuint 0s;
+    animation: PARALLAX_LOADED .2s $ease-out-quint 0s;
   }
 }

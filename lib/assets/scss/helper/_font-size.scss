@@ -1,6 +1,6 @@
 /*
 ===
-2.8 Font Size
+2.3 Font Size
 ===
 
 ### Font Size
@@ -19,22 +19,27 @@
 */
 
 @include media-query-asc {
-	.h-h1 {
-		font-size: get-value($h1-font-size-list);
-	}
-	.h-h2 {
-		font-size: get-value($h2-font-size-list);
-	}
-	.h-h3 {
-		font-size: get-value($h3-font-size-list);
-	}
-	.h-h4 {
-		font-size: get-value($h4-font-size-list);
-	}
-	.h-h5 {
-		font-size: get-value($h5-font-size-list);
-	}
-	.h-h6 {
-		font-size: get-value($h5-font-size-list);
-	}
+  .h-h1 {
+    font-size: get-value($h1-font-size-list);
+  }
+
+  .h-h2 {
+    font-size: get-value($h2-font-size-list);
+  }
+
+  .h-h3 {
+    font-size: get-value($h3-font-size-list);
+  }
+
+  .h-h4 {
+    font-size: get-value($h4-font-size-list);
+  }
+
+  .h-h5 {
+    font-size: get-value($h5-font-size-list);
+  }
+
+  .h-h6 {
+    font-size: get-value($h5-font-size-list);
+  }
 }

@@ -33,7 +33,7 @@ img {
 
 #### Main
 
-Internet Explorer 11では`main`要素を認識せず、`display`Propertyの値が`inline`となるため、次のように調整しています。
+Internet Explorer 11のために、`main`要素の`display`Propertyの値を`block`に再指定しています。
 
 ```scss
 main {
@@ -56,45 +56,50 @@ table {
 `form`関連の要素のStyleを次のように調整しています。
 
 ```scss
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   line-height: inherit;
 }
-input:not([type="file"]):not([type="submit"]):not([type="image"]):not([type="reset"]):not([type="button"]),
-optgroup, select, textarea {
+
+input:not([type=file]):not([type=submit]):not([type=image]):not([type=reset]):not([type=button]):not([type=radio]):not([type=checkbox]),
+optgroup,
+select,
+textarea {
   display: block;
-  font-size: 16px;
   width: 100%;
 }
-input:not([type="file"]):not([type="submit"]):not([type="image"]):not([type="reset"]):not([type="button"]),
+
+input:not([type=file]):not([type=submit]):not([type=image]):not([type=reset]):not([type=button]):not([type=radio]):not([type=checkbox]),
 textarea {
-  &:placeholder-shown {
+  &::placeholder-shown {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
   }
+
   &::-webkit-input-placeholder {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
   }
-  &:-moz-placeholder {
-    font-family: inherit;
-    line-height: inherit;
-    color: #ccc;
-    opacity: 1;
-  }
+
   &::-moz-placeholder {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
     opacity: 1;
   }
-  &:-ms-input-placeholder {
+
+  &::-ms-input-placeholder {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
   }
 }
+
 textarea {
   resize: vertical;
 }
@@ -104,77 +109,39 @@ Style指定の要点は次の通りです。
 
 * 親要素の`line-height`Propertyの値を継承
 
-* 要素をFocusしたときにiOSなどのTouch Deviceで拡大されることを事前に防ぐため、`font-size`Propertyの値を`16px`に設定
-
-* [Layout Category](section-3.html)を利用して詳細な横幅調整を行うことを前提として`display: block`、`width: 100%`に設定
+* [Layout Category](section-3.html)を利用して詳細な横幅調整を行うことを前提として、radioやcheckboxやbutton関連要素以外を`display: block`、`width: 100%`に設定
 
 * PlaceholderのStyleを固定
 
 */
 
 @font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Medium');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Bold");
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Bold');
   font-weight: bold;
 }
 
 @font-face {
-  font-family: "Yu Mincho";
-  src: local("Yu Mincho Medium");
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  src: local("Yu Mincho Medium");
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  src: local("Yu Mincho Medium");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Yu Mincho";
-  src: local("Yu Mincho Medium");
+  font-family: 'Yu Mincho';
+  src: local('Yu Mincho Medium');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Yu Mincho";
-  src: local("Yu Mincho Bold");
+  font-family: 'Yu Mincho';
+  src: local('Yu Mincho Bold');
   font-weight: bold;
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -198,40 +165,36 @@ textarea {
   line-height: inherit;
 }
 
-input:not([type="file"]):not([type="submit"]):not([type="image"]):not([type="reset"]):not([type="button"]),
+input:not([type=file]):not([type=submit]):not([type=image]):not([type=reset]):not([type=button]):not([type=radio]):not([type=checkbox]),
 optgroup,
 select,
 textarea {
   display: block;
-  font-size: 16px;
   width: 100%;
 }
 
-input:not([type="file"]):not([type="submit"]):not([type="image"]):not([type="reset"]):not([type="button"]),
+input:not([type=file]):not([type=submit]):not([type=image]):not([type=reset]):not([type=button]):not([type=radio]):not([type=checkbox]),
 textarea {
-  &:placeholder-shown {
+  &::placeholder-shown {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
   }
+
   &::-webkit-input-placeholder {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
   }
-  &:-moz-placeholder {
-    font-family: inherit;
-    line-height: inherit;
-    color: #ccc;
-    opacity: 1;
-  }
+
   &::-moz-placeholder {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;
     opacity: 1;
   }
-  &:-ms-input-placeholder {
+
+  &::-ms-input-placeholder {
     font-family: inherit;
     line-height: inherit;
     color: #ccc;

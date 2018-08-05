@@ -11,9 +11,8 @@ Frontwork CSSでは[normalize.css](https://github.com/necolas/normalize.css)を�
 
 */
 
-@import "foundation/normalize";
-@import "foundation/basic";
-@import "foundation/root";
-@import "foundation/font-size";
-@import "foundation/margin";
-@import "foundation/print";
+@import 'foundation/normalize';
+@import 'foundation/basic';
+@import 'foundation/root';
+@import 'foundation/typography';
+@import 'foundation/print';

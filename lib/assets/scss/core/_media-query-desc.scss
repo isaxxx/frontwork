@@ -1,0 +1,15 @@
+@mixin media-query-desc {
+  @if $break-point-list != null {
+    $break-point-list-length: length($break-point-list);
+    $query: $break-point-list-length !global;
+    @content;
+    @for $i from 1 through $break-point-list-length {
+      $query: $break-point-list-length - $i !global;
+      @media (max-width: nth($break-point-list, $query + 1) - 1px) {
+        @content;
+      };
+    }
+  } @else {
+    @content;
+  }
+}

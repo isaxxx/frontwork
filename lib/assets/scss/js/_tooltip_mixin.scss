@@ -1,4 +1,4 @@
-@mixin tooltip () {
+@mixin tooltip {
 
   .js-tooltip__child {
     display: block !important;
@@ -10,5 +10,5 @@
   .js-tooltip.is-focus .js-tooltip__child {
     visibility: visible;
   }
-  
+
 }

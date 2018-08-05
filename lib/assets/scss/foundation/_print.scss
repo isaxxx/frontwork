@@ -9,44 +9,48 @@ Print Styleを次のように設定しています。
 
 ```scss
 @media print {
-	h1, h2, h3, h4, h5, h6, p {
-		orphans: 3;
-		widows: 3;
-	}
-	h1, h2, h3, h4, h5, h6 {
-		page-break-after: avoid;
-	}
-	table, img, pre, blockquote {
-		page-break-inside: avoid;
-	}
+  h1, h2, h3, h4, h5, h6, p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  table, img, pre, blockquote {
+    page-break-inside: avoid;
+  }
 }
 ```
 
 */
 
 @media print {
-	p,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		orphans: 3;
-		widows: 3;
-	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		page-break-after: avoid;
-	}
-	table,
-	img,
-	pre,
-	blockquote {
-		page-break-inside: avoid;
-	}
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+  }
+
+  table,
+  img,
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
 }

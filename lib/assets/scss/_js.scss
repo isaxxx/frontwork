@@ -15,15 +15,12 @@ Frontwork CSSのJavaScript APIを利用する場合、次のJavaScript Fileを�
 
 */
 
-@import "js/modal";
-@import "js/carousel";
-@import "js/menu_mixin";
-@import "js/menu";
-@import "js/accordion_mixin";
-@import "js/accordion";
-@import "js/tooltip_mixin";
-@import "js/tooltip";
-@import "js/pagetop";
-@import "js/parallax";
-@import "js/youtube";
-@import "js/google-maps";
+@import 'js/modal';
+@import 'js/carousel';
+@import 'js/menu_mixin';
+@import 'js/menu';
+@import 'js/accordion_mixin';
+@import 'js/accordion';
+@import 'js/tooltip_mixin';
+@import 'js/tooltip';
+@import 'js/parallax';

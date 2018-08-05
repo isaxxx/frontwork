@@ -21,17 +21,15 @@ Modifierを利用して段組数を指定します。
 */
 
 .l-mc {
-	column-count: auto;
+  column-count: auto;
 }
 
 @include media-query-asc {
+  .l-mc--2\@#{$query} {
+    column-count: 2;
+  }
 
-	.l-mc--2\@#{$query} {
-		column-count: 2;
-	}
-
-	.l-mc--3\@#{$query} {
-		column-count: 3;
-	}
-  
+  .l-mc--3\@#{$query} {
+    column-count: 3;
+  }
 }

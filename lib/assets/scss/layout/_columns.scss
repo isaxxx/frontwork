@@ -192,118 +192,117 @@ Flexible Itemの表示順の優先順位を指定します。
 .l-cn,
 .l-rw,
 .l-cl {
-	display: block;
-	min-height: 0;
+  display: block;
+  min-height: 0;
 }
 
 .l-st,
 .l-cn,
 .l-rw {
-	@include clearfix;
+  @include clearfix;
 }
 
 .l-cn {
-	margin-left: auto;
-	margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .l-cl {
-	width: 100%;
-	float: left;
+  width: 100%;
+  float: left;
 }
 
 @include media-query-asc {
+  .l-st {
+    @if unit(get-value($container-size-list)) == 'px' {
+      min-width: get-value($container-size-list);
+    } @else if unit(get-value($container-min-size-list)) == 'px' {
+      min-width: get-value($container-min-size-list);
+    } @else if get-value($container-max-size-list) != 'none' and unit(get-value($container-max-size-list)) == 'px' {
+      min-width: get-value($container-max-size-list);
+    } @else {
+      min-width: 0;
+    }
+  }
 
-	.l-st {
-		min-width: get-value($container-size-list);
-	}
+  .l-cn {
+    width: get-value($container-size-list);
+    min-width: get-value($container-min-size-list);
+    max-width: get-value($container-max-size-list);
+    padding-right: get-value($gatter-size-list);
+    padding-left: get-value($gatter-size-list);
+  }
 
-	.l-cn {
-		width: get-value($container-size-list);
-		padding-right: get-value($gatter-size-list);
-		padding-left: get-value($gatter-size-list);
-	}
+  .l-rw {
+    margin-right: -(get-value($gatter-size-list));
+    margin-left: -(get-value($gatter-size-list));
+    padding-left: get-value($gatter-size-list) / 2;
+    padding-right: get-value($gatter-size-list) / 2;
+  }
 
-	.l-rw {
-		margin-right: -(get-value($gatter-size-list));
-		margin-left: -(get-value($gatter-size-list));
-		padding-left: get-value($gatter-size-list) / 2;
-		padding-right: get-value($gatter-size-list) / 2;
-	}
-
-	.l-cl {
-		padding-right: get-value($gatter-size-list) / 2;
-		padding-left: get-value($gatter-size-list) / 2;
-	}
-
+  .l-cl {
+    padding-right: get-value($gatter-size-list) / 2;
+    padding-left: get-value($gatter-size-list) / 2;
+  }
 }
 
 @include media-query-asc {
+  .l-cn--fl\@#{$query} {
+    width: 100%;
+  }
 
-	.l-cn--fl\@#{$query} {
-		width: 100%;
-	}
+  .l-rw--ng\@#{$query},
+  .l-cl--ng\@#{$query} {
+    padding-right: 0;
+    padding-left: 0;
+  }
 
-	.l-rw--ng\@#{$query},
-	.l-cl--ng\@#{$query} {
-		padding-right: 0;
-		padding-left: 0;
-	}
+  @for $i from 1 through $grid-unit {
+    .l-cl--#{$i}\@#{$query} {
+      width: 100 / $grid-unit * $i * 1%;
+    }
+  }
 
-	@for $i from 1 through $grid-unit {
+  @for $i from 0 through $grid-unit {
+    .l-cl--ml#{$i}\@#{$query} {
+      margin-left: 100 / $grid-unit * $i * 1%;
+    }
 
-		.l-cl--#{$i}\@#{$query} {
-			width: 100 / $grid-unit * $i * 1%;
-		}
+    .l-cl--mr#{$i}\@#{$query} {
+      margin-right: 100 / $grid-unit * $i * 1%;
+    }
+  }
 
-	}
+  .l-rw--fx\@#{$query} {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-	@for $i from 0 through $grid-unit {
+  .l-rw--fx--hr\@#{$query} {
+    flex-direction: row; // default
+  }
 
-		.l-cl--ml#{$i}\@#{$query} {
-			margin-left: 100 / $grid-unit * $i * 1%;
-		}
+  .l-rw--fx--vt\@#{$query} {
+    flex-direction: column;
+  }
 
-		.l-cl--mr#{$i}\@#{$query} {
-			margin-right: 100 / $grid-unit * $i * 1%;
-		}
+  .l-rw--fx--tp\@#{$query} {
+    align-items: stretch; // default
+  }
 
-	}
+  .l-rw--fx--md\@#{$query} {
+    align-items: center;
+  }
 
-	.l-rw--fx\@#{$query} {
-		display: flex;
-		flex-wrap: wrap;
-	}
+  .l-cl--fx--od\@#{$query} {
+    order: 0; // default
+  }
 
-	// default
-	.l-rw--fx--hr\@#{$query} {
-		flex-direction: row;
-	}
+  .l-cl--fx--op\@#{$query} {
+    order: 1;
+  }
 
-	.l-rw--fx--vt\@#{$query} {
-		flex-direction: column;
-	}
-
-	// default
-	.l-rw--fx--tp\@#{$query} {
-		align-items: stretch;
-	}
-
-	.l-rw--fx--md\@#{$query} {
-		align-items: center;
-	}
-
-	// default
-	.l-cl--fx--od\@#{$query} {
-		order: 0;
-	}
-
-	.l-cl--fx--op\@#{$query} {
-		order: 1;
-	}
-
-	.l-cl--fx--om\@#{$query} {
-		order: -1;
-	}
-
+  .l-cl--fx--om\@#{$query} {
+    order: -1;
+  }
 }

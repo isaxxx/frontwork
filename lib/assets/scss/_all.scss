@@ -11,14 +11,14 @@
 
 ## About Frontwork CSS
 
-Frontwork CSSは[Frontwork](https://github.com/isaxxx/frontwork/)が生成するCSSとその元となるSCSS、およびそれを補助するJavaScript Fileの総称です。
-Front Endの仕事のCSSとJavaScriptの実装が大部分を占めます。
+Frontwork CSSは[Frontwork](https://github.com/isaxxx/frontwork/)が生成するCSSとその元となるSCSS、およびそれを補助するJavaScriptの総称です。
+フロントエンドの仕事はCSSとJavaScriptの実装が大部分を占めます。
 Frontwork CSSにはその実装を補助する機能があります。
 
-本Documentは、Frontwork CSSの理解を容易にすることを目的としたStyleguideです。
-Frontwork CSSで用意しているCSS ClassやJavaScript APIの役割や使用方法を紹介しています。
+本ドキュメントは、Frontwork CSSの理解を容易にすることを目的としています。
+Frontwork CSSで用意しているCSSやJavaScriptの役割や使用方法を紹介しています。
 
-このSectionではまず、Frontwork CSSのCordingにおけるRulesや設定ファイルの詳細、特徴的なMedia Queryの扱い方、またIconfontの利用方法について説明しています。
+このセクションではまず、Frontwork CSSの利用方法やコーディングのルール、特徴的なCSS Media Queryの扱い方、またアイコンフォントの利用方法について説明しています。
 
 ### Import
 
@@ -298,10 +298,8 @@ Styleの拡張を促すため、定義したStyleの上書きを極力なくし�
 
 */
 
-@import "~/config";
-
-@import "core";
-@import "foundation";
-@import "helper";
-@import "layout";
-@import "js";
+@import 'core';
+@import 'foundation';
+@import 'helper';
+@import 'layout';
+@import 'js';

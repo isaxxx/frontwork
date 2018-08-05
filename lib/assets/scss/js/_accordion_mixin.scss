@@ -5,19 +5,15 @@
   $transition-duration: .1s, $transition-timing-function: ease-in-out,
   $toggle-class: is-open
 ) {
-
-  & {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    width: $container-width;
-    height: $container-height;
-  }
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: $container-width;
+  height: $container-height;
 
   @if $form == plus {
-
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       content: '';
       display: block;
       background-color: $icon-color;
@@ -29,24 +25,22 @@
       right: 0;
     }
 
-    &:before {
+    &::before {
       width: $icon-size;
       height: $icon-line-weight;
     }
 
-    &:after {
+    &::after {
       width: $icon-line-weight;
       height: $icon-size;
       transition: opacity $transition-duration $transition-timing-function;
     }
 
-    .#{$toggle-class} &:after {
+    .#{$toggle-class} &::after {
       opacity: 0;
     }
-
   } @else if $form == arrow {
-
-    &:before {
+    &::before {
       content: '';
       display: block;
       position: absolute;
@@ -63,10 +57,8 @@
       transition: transform $transition-duration $transition-timing-function;
     }
 
-    .#{$toggle-class} &:before {
+    .#{$toggle-class} &::before {
       transform: rotate(225deg) skewX(- $icon-skew) skewY(- $icon-skew);
     }
-
   }
-
 }

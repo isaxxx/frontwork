@@ -1,0 +1,71 @@
+/*
+===
+1.3 Typography
+===
+
+### Typography
+
+#### Font Size
+
+[_config.scss](index.html#0.2)のいくつかの変数が見出し要素に適用されます。
+
+#### Margin
+
+次のようにMarginを設定しています。
+
+```scss
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+
+ol, ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+```
+
+*/
+
+@include media-query-asc {
+  h1 {
+    font-size: get-value($h1-font-size-list);
+  }
+
+  h2 {
+    font-size: get-value($h2-font-size-list);
+  }
+
+  h3 {
+    font-size: get-value($h3-font-size-list);
+  }
+
+  h4 {
+    font-size: get-value($h4-font-size-list);
+  }
+
+  h5 {
+    font-size: get-value($h5-font-size-list);
+  }
+
+  h6 {
+    font-size: get-value($h6-font-size-list);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+
+ol,
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
