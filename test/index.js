@@ -1,25 +1,24 @@
-const frontwork = require('../index');
 const test = require('ava');
+const rimraf = require('rimraf');
+const frontwork = require('../index');
 
-test('init task - case 001', (t) => {
-  frontwork({
-    init: true
+test('init task & production task - case 001', (t) => {
+  return new Promise((resolve) => {
+    rimraf('./src/', () => {
+      resolve();
+    });
   }).then(() => {
-    t.pass();
-  });
-});
-
-test('watch task - case 002', (t) => {
-  frontwork({
-    watch: true
+    return frontwork({
+      init: true,
+      watch: false,
+      production: false
+    });
   }).then(() => {
-    t.pass();
-  });
-});
-
-test('production task - case 003', (t) => {
-  return frontwork({
-    production: true
+    return frontwork({
+      init: false,
+      watch: false,
+      production: true
+    });
   }).then(() => {
     t.pass();
   });

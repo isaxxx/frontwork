@@ -1,6 +1,6 @@
 {
   "name": "frontwork",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Tools for Front End Web Developers Work.",
   "main": "./index.js",
   "bin": {
@@ -9,10 +9,10 @@
   "scripts": {
     "test": "ava --verbose",
     "check": "eslint . && sass-lint -c .sass-lint.yml -v -q",
-    "commit": "git add -A && git commit",
-    "ignore": "git rm -r --cached . && git add -A && git commit --allow-empty -m 'gitignore-refresh' && git reset --soft HEAD^",
-    "push": "git push origin master",
-    "publish": "npm publish"
+    "git-ignore": "git rm -r --cached . && git add -A && git commit --allow-empty -m 'gitignore-refresh' && git reset --soft HEAD^",
+    "git-commit": "git add -A && git commit",
+    "git-push": "git push origin master",
+    "npm-publish": "npm publish"
   },
   "keywords": [
     "front-end"
@@ -27,33 +27,33 @@
   },
   "license": "MIT",
   "dependencies": {
-    "autoprefixer": "^8.6.3",
+    "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.24.4",
+    "browser-sync": "^2.24.6",
     "chalk": "^2.4.1",
     "cpx": "^1.5.0",
-    "ejss": "^1.2.0",
-    "eslint": "^5.1.0",
+    "ejss": "^1.2.2",
+    "eslint": "^5.3.0",
     "eslint-loader": "^2.1.0",
     "glob": "^7.1.2",
-    "iconfont-gen": "^1.0.1",
+    "iconfont-gen": "^1.1.2",
     "imagemin": "^5.3.1",
     "imagemin-gifsicle": "^5.2.0",
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^5.1.0",
     "imagemin-svgo": "^7.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.9.2",
     "path": "^0.12.7",
-    "postcss": "^6.0.22",
+    "postcss": "^6.0.23",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
-    "styleguide-lite": "^1.0.5",
+    "styleguide-lite": "^1.1.6",
     "update-notifier": "^2.5.0",
     "watch": "^1.0.2",
-    "webpack": "^4.12.0",
+    "webpack": "^4.16.5",
     "yargs": "^11.1.0"
   },
   "devDependencies": {

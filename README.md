@@ -8,29 +8,33 @@ Tools for Front End Web Developers Work.
 
 ## Specification
 
-* Compile the EJS
+* Compile EJS & Lint HTML
 
-* Compile the SCSS
+* Compile & Lint SCSS
 
-* Transpile the JavaScript
+* Transpile & Bundle & Lint JavaScript (Webpack)
 
-* Compress the Images
+* Compress Images
 
-* Generate the Iconfont
+* Generate Iconfont
 
-* Generate the Styleguide
+* Generate Styleguide
 
-* Prepared SCSS and JS - [Frontwork CSS](https://frontwork.isaxxx.com)
+* Live Reload (Browsersync)
+
+* Prepared SCSS and JavaScript - [Frontwork CSS](https://frontwork.isaxxx.com)
 
 ## Installation
 
-### npm
+### NPM
 
 ```bash
 $ npm install --save frontwork
 ```
 
 ## Usage
+
+### CLI
 
 ```bash
 Options:
@@ -41,7 +45,7 @@ Options:
   --help, -h     show this help. [boolean]
 ```
 
-### Initialize
+#### Initialize
 
 Install the source files.
 
@@ -49,7 +53,7 @@ Install the source files.
 $ npx frontwork --init
 ```
 
-### Watch
+#### Watch
 
 Watch the source files and processes the task if there are changes.
 
@@ -57,7 +61,7 @@ Watch the source files and processes the task if there are changes.
 $ npx frontwork --watch
 ```
 
-### Production
+#### Production
 
 Delete unnecessary files and Compress all files.
 
@@ -65,56 +69,16 @@ Delete unnecessary files and Compress all files.
 $ npx frontwork --production
 ```
 
-### Version
+### JavaScript
 
-```bash
-$ npx frontwork --version
-```
-
-### Help
-
-```bash
-$ npx frontwork --help
-```
-
-## Configuration
-
-```bash
-src
-├── ejs
-│   ├── _common
-│   │   ├── _footer.ejs
-│   │   └── _header.ejs
-│   ├── about
-│   │   └── index.ejs
-│   ├── index.ejs
-│   └── options.json
-├── images
-│   ├── apple-touch-icon.png
-│   ├── favicon.ico
-│   └── og-image.png
-├── js
-│   ├── app
-│   │   ├── app.js
-│   │   └── styleguide.js
-│   └── vendor
-│       └── sample.js
-├── scss
-│   ├── app
-│   │   ├── _components-editor.scss
-│   │   ├── _components-modules.scss
-│   │   ├── _config.scss
-│   │   ├── _iconfont.scss
-│   │   ├── _theme-aside.scss
-│   │   ├── _theme-footer.scss
-│   │   ├── _theme-header.scss
-│   │   ├── _theme-main.scss
-│   │   ├── app.scss
-│   │   └── styleguide.scss
-│   └── vendor
-│       └── sample.css
-└── svg
-    └── sample.svg
+```js
+frontwork({
+  init: true,
+  watch: false,
+  production: false
+}).then(() => {
+  console.log('Complete!!');
+});
 ```
 
 ## [Changelog](CHANGELOG.md)

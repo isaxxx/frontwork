@@ -1,3 +1,7 @@
+# 1.1.0 (2018-08-09)
+
+- Add: Lint Function
+
 # 1.0.3 (2018-06-21)
 
 - Fix: Build HTML
