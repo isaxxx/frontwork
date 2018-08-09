@@ -3,9 +3,9 @@
 3.2 Table Block
 ===
 
-### Table Block
+### Table Block Class
 
-Table要素とそれに関連する要素すべての`display`Propertyの値を`block`に変更します。
+`table`要素とそれに関連する要素すべてを`display: block`に変更します。
 
 ```html
 <table class="l-tb">
@@ -33,7 +33,7 @@ Table要素とそれに関連する要素すべての`display`Propertyの値を`
 
 #### Reset Modifier
 
-StyleをResetするModifierが用意されています。
+スタイルをリセットします。
 
 ```html
 <table class="l-tb l-tb--rs@0">

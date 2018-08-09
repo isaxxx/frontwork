@@ -1,3 +1,20 @@
+/*
+===
+2.6 Button
+===
+
+### Button Mixin
+
+`input[type="button"]`、`button`などのButtonを示す要素のスタイルをリセットします。
+
+```scss
+button {
+  @include button;
+}
+```
+
+*/
+
 @mixin button {
   display: inline-block;
   text-align: center;

@@ -5,14 +5,14 @@
 
 ### Modal
 
-Madal Windowを生成します。
-`a`要素の`href`属性の値で、Modal Window内に表示する要素が決定します。
+モーダルウインドウを生成します。
+`a`要素の`href`属性の値で、モーダルウインドウに表示する要素が決定します。
 
-* Anchor linkの場合はPage内のAnchor Linkの中の要素を表示
+* アンカーリンクの場合は同じHTML内のアンカーリンクの要素を表示
 
 * 画像の場合は、画像を表示
 
-* それ以外の場合はURLとみなし、`iframe`要素を表示します
+* それ以外の場合はURLとみなし、`iframe`要素を表示
 
 #### HTML
 
@@ -32,7 +32,7 @@ Madal Windowを生成します。
 
 #### JavaScript
 
-第一引数にNodeListを指定し、第二引数にParameterを指定します。
+第一引数にNodeListを指定し、第二引数にパラメーターオブジェクトを指定します。
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {

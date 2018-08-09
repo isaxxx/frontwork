@@ -1,17 +1,17 @@
 /*
 ===
-4.7 Parallax
+4.6 Parallax
 ===
 
 ### Parallax
 
-Parallax効果を付与します。
+パララックス効果を付与します。
 
 #### HTML
 
-要素がWindow画面に表示されている間、`data-x``data-y`属性の値の分だけ移動します。
+要素がブラウザ表示域にある間、`data-x``data-y`属性の値の分だけ移動します。
 `data-x`属性は横方向、`data-y`属性は縦方向に移動します。
-Animationをなめらかにするために、対象要素の`position`Propertyの値を`absolute`にすることが推奨されます。
+アニメーションをよりなめらかにするために、対象要素を`position: absolute`にすることが推奨されます。
 
 ```html
 <div class="js-parallax" data-x="100" data-y="100">

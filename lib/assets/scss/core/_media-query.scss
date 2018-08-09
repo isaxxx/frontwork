@@ -1,0 +1,115 @@
+/*
+===
+0.3 Media Query
+===
+
+### Media Query
+
+Frontwork CSSには、CSS3 Media Queryを効率良く記述するためのMixinとFunctionが用意されています。
+Mixin内で利用できる`$query`変数が[設定ファイル](index.html#link-2)の`$break-point-list`変数の値に列挙するブレイクポイントの順番に相当します。
+
+Frontwork CSSでは`@if`制御構文を利用して`$query`変数で分岐し、スタイルを記述することを推奨しています。
+また`$query`変数はJavaScriptの引数になることがあり、Frontwork CSSではブレイクポイントごとのスタイルを`$query`変数の値で制御するという考え方が重要になります。
+
+```scss
+$break-point-list: 768px, 980px;
+
+@include media-query-asc {
+  @if $query == 0 {
+    // no media query
+  }
+  @if $query == 1 {
+    // @media (min-width: 768px)
+  }
+  @if $query == 2 {
+    // @media (min-width: 980px)
+  }
+}
+
+@include media-query-desc {
+  @if $query == 0 {
+    // no media query
+  }
+  @if $query == 1 {
+    // @media (max-width: 767px)
+  }
+  @if $query == 2 {
+    // @media (max-width: 979px)
+  }
+}
+```
+
+#### Get Value Function
+
+リストからブレイクポイントごとの値を取り出すことができる関数が用意されています。
+この関数は、例えばFrontwork CSSの内部では次のように利用しています。
+
+```scss
+$break-point-list: 768px, 980px;
+$root-font-size-list: 14px, 16px, 18px;
+
+@include media-query-asc {
+  html {
+    font-size: get-value($root-font-size-list);
+  }
+}
+```
+
+結果は次のようになります。
+
+```scss
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 980px) {
+  html {
+    font-size: 18px;
+  }
+}
+```
+
+*/
+
+@mixin media-query-asc {
+  @if $break-point-list != null {
+    $break-point-list-length: length($break-point-list);
+    $query: 0 !global;
+    @content;
+    @for $i from 1 through $break-point-list-length {
+      $query: $i !global;
+      @media (min-width: nth($break-point-list, $query)) {
+        @content;
+      };
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-query-desc {
+  @if $break-point-list != null {
+    $break-point-list-length: length($break-point-list);
+    $query: $break-point-list-length !global;
+    @content;
+    @for $i from 1 through $break-point-list-length {
+      $query: $break-point-list-length - $i !global;
+      @media (max-width: nth($break-point-list, $query + 1) - 1px) {
+        @content;
+      };
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function get-value($list) {
+  $value: nth($list, $query + 1);
+  @return $value;
+}

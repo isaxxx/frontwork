@@ -5,7 +5,7 @@
 
 ### Tooltip
 
-Tooltipを生成します。
+ツールチップを生成します。
 
 #### HTML
 
@@ -20,7 +20,7 @@ Tooltipを生成します。
 </li>
 ```
 
-[Accordion](section-4.html#4.4)と組み合わせて、画面幅が大きいときにはTooltip、小さいときには[Accordion](section-4.html#4.4)のように実装できます。
+[アコーディオン](section-4.html#link-4)と組み合わせて、画面幅が大きいときにはツールチップ、小さいときには[アコーディオン](section-4.html#link-4)といったように実装できます。
 
 ```html
 <li class="js-tooltip js-accordion">
@@ -36,7 +36,7 @@ Tooltipを生成します。
 
 #### JavaScript
 
-第一引数に、Tooltipを表示する最小の[Media Query Mixin](index.html#)の`$query`変数の数を指定します。
+第一引数に、ツールチップを表示する最小の[Media Query Mixin](index.html#link-3)の`$query`変数の数を指定します。
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### SCSS
 
-Tooltipの見た目を補助するMixinが用意されています。
+ツールチップの見た目を補助するMixinが用意されています。
 
 ```scss
 @include media-query-asc {
@@ -58,3 +58,18 @@ Tooltipの見た目を補助するMixinが用意されています。
 ```
 
 */
+
+@mixin tooltip {
+
+  .js-tooltip__child {
+    display: block !important;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .js-tooltip.is-hover .js-tooltip__child,
+  .js-tooltip.is-focus .js-tooltip__child {
+    visibility: visible;
+  }
+
+}

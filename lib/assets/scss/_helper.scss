@@ -5,9 +5,17 @@
 
 ## Helper Category
 
+Text Alignなど、小規模な振る舞いを追加するための補助的な役割を持つスタイルを定義しています。
+Applicationカテゴリーのスタイル指定の肥大化を防ぐ目的で利用します。
+クラス名は、`h-`プレフィックスに続いて、振る舞い示す2文字の略称から成ります。
+
 */
 
 @import 'helper/text-align';
 @import 'helper/margin';
 @import 'helper/font-size';
 @import 'helper/print';
+@import 'helper/clearfix';
+@import 'helper/button';
+@import 'helper/list';
+@import 'helper/ellipsis';

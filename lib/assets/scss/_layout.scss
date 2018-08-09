@@ -5,6 +5,10 @@
 
 ## Layout Category
 
+ページ全体のレイアウトを構築するためのスタイルを定義しています。
+クラス名は、`l-`プレフィックスに続いて、レイアウトの種別を示す2文字の略称とElementとModifierから成ります。
+またModifierの`@`の文字の後に続く数字は、[Media Query Mixin](#link-3)昇順の`$query`変数の値で、ブレイクポイントごとに振る舞いが変化することを示しています。
+
 */
 
 @import 'layout/columns';

@@ -5,22 +5,22 @@
 
 ## JavaScript Category
 
+JavaScriptの制御に利用するスタイルを定義しています。
+クラス名には、`js-`プレフィックスを付与します。
+
 ### Import
 
-Frontwork CSSのJavaScript APIを利用する場合、次のJavaScript Fileを読み込んでください。
+Frontwork CSSのJavaScriptを利用する場合、次のJavaScriptを読み込んでください。
 
-```html
-<script src="/assets/js/lib.js"></script>
+```js
+import Frontwork from 'frontwork/all';
 ```
 
 */
 
 @import 'js/modal';
 @import 'js/carousel';
-@import 'js/menu_mixin';
 @import 'js/menu';
-@import 'js/accordion_mixin';
 @import 'js/accordion';
-@import 'js/tooltip_mixin';
 @import 'js/tooltip';
 @import 'js/parallax';

@@ -5,7 +5,7 @@
 
 ### Carousel
 
-Carouselを生成します。
+カルーセルを生成します。
 
 #### HTML
 
@@ -25,7 +25,7 @@ Carouselを生成します。
 
 #### JavaScript
 
-第一引数にNodeを指定し、第二引数にParameterを指定します。
+第一引数にNodeを指定し、第二引数にパラメーターオブジェクトを指定します。
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### SCSS
 
-Carouselが読み込まれた時、Slideの切り替わり時に状態変化を示すClassが追加されます。
-それを利用して複雑なAnimationを付与することができます。
+カルーセルが読み込まれた時、スライドの切り替わり時に状態変化を示すクラスが追加されます。
+それを利用して複雑なアニメーションを付与することができます。
 
 ```scss
 .carousel,

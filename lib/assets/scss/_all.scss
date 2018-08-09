@@ -11,21 +11,20 @@
 
 ## About Frontwork CSS
 
-Frontwork CSSは[Frontwork](https://github.com/isaxxx/frontwork/)が生成するCSSとその元となるSCSS、およびそれを補助するJavaScriptの総称です。
-フロントエンドの仕事はCSSとJavaScriptの実装が大部分を占めます。
-Frontwork CSSにはその実装を補助する機能があります。
+Frontwork CSSは[Frontwork](https://github.com/isaxxx/frontwork/)に付属するSCSS、およびJavaScriptの総称です。
+Frontwork CSSはWebサイト制作における汎用的な機能を有し、フロントエンドエンジニアの仕事を補助することができます。
 
 本ドキュメントは、Frontwork CSSの理解を容易にすることを目的としています。
-Frontwork CSSで用意しているCSSやJavaScriptの役割や使用方法を紹介しています。
-
-このセクションではまず、Frontwork CSSの利用方法やコーディングのルール、特徴的なCSS Media Queryの扱い方、またアイコンフォントの利用方法について説明しています。
+このセクションでは、Frontwork CSSの利用方法やコーディングルールについて説明しています。
 
 ### Import
 
-Frontwork CSSを利用する場合、次のCSS Fileを読み込んでください。
+Frontwork CSSを利用する場合、次のSCSSを読み込んでください。
 
-```html
-<link rel="stylesheet" href="/assets/css/lib.css" />
+```scss
+@import 'config';
+@import 'frontwork/all';
+@import 'iconfont';
 ```
 
 ### Target Browsers
@@ -46,258 +45,7 @@ Frontwork CSSを利用する場合、次のCSS Fileを読み込んでくださ�
 
 */
 
-/*
-===
-0.1 Coding Rules
-===
-
-### Coding Rules
-
-Frontwork CSSにはいくつかのCoding Rulesがあり、そのRulesを遵守することが推奨されます。
-
-#### Categorize
-
-[SMACSS](https://smacss.com/)の考え方を応用し、機能や振る舞いに応じたCategorizeを行なっています。
-Style設計時に、それぞれのCategoryを組み合わせて利用します。
-Frontwork CSSではApplication Category以外のCSSを自動生成する[機能](index.html#0.2)があるため、基本的にはApplication Categoryの開発のみに注力することができます。
-
-##### [Foundation](section-1.html)
-
-各要素の基礎的なStyleを定義しています。
-User AgentごとのStyleのResetや初期化を行います。
-
-##### [Helper](section-2.html)
-
-ClearfixやText Alignなど、要素に小規模な振る舞いを追加ための補助的な役割を持つStyleを定義しています。
-これを利用することで、Application CategoryのStyle指定が肥大化することを防ぎます。
-Class名称は、`h-`Prefixに続いて、振る舞い示す2文字の略称から成ります。
-
-##### [Layout](section-3.html)
-
-Page全体の要素の配置やSize調整を行うStyleを定義しています。
-Class名称は、`l-`Prefixに続いて、Layoutの種別を示す2文字の略称とElementとModifierから成ります。
-またModifierの`@`の文字の後に続く数字は、[Media Query Mixin](index.html#0.3)昇順の`$query`変数の値を示しており、Break PointごとのStyle定義の判断を容易にしています。
-
-##### [JavaScript](section-4.html)
-
-JavaScriptの制御に利用するStyleを定義しています。
-Class名称には、`js-`Prefixを付与します。
-
-##### State
-
-要素の状態を示すClassです。
-Class名称は、`is-current`、`is-active`、`is-disable`のように`is-`Prefixの後に状態を示す単語が続きます。
-State Categoryは単独でStyleを設定するのではなく、必ず他のCategoryと合わせて利用します。
-特にJavaScript Categoryと組み合わせて利用されることが多く、Frontwork CSSでは状態変化に合わせてAnimationを付与するような使い方を多々見られます。
-
-##### Application (Components & Theme)
-
-Application固有のStyleを定義します。
-Application CategoryはさらにThemeとComponentsの2つのCategoryに分けられます。
-
-###### Components
-
-汎用性が高く、再利用しやすいStyleを定義します。
-例えば、ButtonやMedia Patternだったり、Userの入力を想定したStyleが該当します。
-このStyleはDocumentに残しやすくあるべきで、Styleguideの[Application Category](section-5.html)に追記することが望ましいです。
-
-###### Theme
-
-Components以外のStyleを定義します。
-例えばHeaderやFooterのようなPageで唯一の存在となる要素や、汎用性の低い要素が該当します。
-
-#### Class Name
-
-Class命名規則に、[BEM](https://bem.info/)を採用しています。
-
-詳細な命名規則は次の通りです。
-すべての単語は小文字を使用し、大文字は使用せず、単語の連結には`-`を用います。
-比較的よく使う単語は略称を使用しても構いません。
-
-```html
-<div class="media-background">
-  <div class="media media--middle">
-    <div class="media__head">
-      <h1 class="media__title">Title</h1>
-    </div>
-    <p class="media__body">Body</p>
-  </div>
-</div>
-```
-
-```scss
-.media {
-  // Block
-}
-.media__head,
-.media__body,
-.media__title {
-  // Element
-}
-.media--middle {
-  // Modifier
-}
-.media-background {
-  // Other Block
-}
-```
-
-#### Style Design
-
-[Philip Walton](https://philipwalton.com/articles/css-architecture/)氏が述べている次の原則を意識したStyle設計を行います。
-
-* 予測しやすい
-
-* 再利用しやすい
-
-* 保守しやすい
-
-* 拡張しやすい
-
-##### ID Selector
-
-詳細度を予測しやすくするため、ID Selector（`#`）を利用したStyle設計は行いません。
-
-##### Element Selector
-
-HTML構造の依存を低減し再利用しやすくするため、なるべくElement Selectorを利用しません。
-またRendering速度を低下させるため、なるべくUniversal Selectorを利用しません。
-Class Selectorの利用を推奨します。
-
-##### Absolute Value
-
-再利用しやくするため、なるべく絶対値を利用しないStyle設計を意識します。
-
-##### Important Declaration
-
-詳細度を予測しやすくするため、`!important`宣言を多用しないよう意識します。
-
-##### Nest
-
-HTML構造の依存を低減し再利用しやすくするため、SelectorのNestは最小限になるように意識します。
-可能であれば、Nestを行わないようにします。
-
-```html
-<div class="media">
-  <div class="media__head">
-    Head
-  </div>
-</div>
-```
-
-```scss
-.media .media__head {
-  // Bad
-}
-
-.media__head {
-  // Good
-}
-```
-
-ただしあまりにもModifier Classが増えたり、Styleの再利用性がない場合には、Mixes Patternの使用やApplication Theme Categoryを追加するなどして、Nestしても構いません。
-
-```html
-<form class="form">
-  <button class="button">Button</button>
-</form>
-```
-
-###### Mixes Pattern
-
-```scss
-.form .button {
-  // Mixes Pattern
-}
-```
-
-###### Application Theme
-
-```html
-<form class="form">
-  <div class="form-left">
-    <button class="button">Button</button>
-  </div>
-</form>
-```
-
-```scss
-.form-left .button {
-  // Application Theme
-}
-```
-
-##### Common
-
-Codeの視認性を保ち、保守運用しやすくするため、同様のコードはなるべく共通化します。
-
-```scss
-// Bad
-.sample-a {
-  font-size: 16px;
-  color: red;
-}
-
-.sample-b {
-  font-size: 16px;
-  color: green;
-}
-
-// Good
-.sample-a,
-.sample-b {
-  font-size: 16px;
-}
-
-.sample-a {
-  color: red;
-}
-
-.sample-b {
-  color: green;
-}
-```
-
-##### Cascading
-
-Styleの拡張を促すため、定義したStyleの上書きを極力なくし、Styleを追加していく記述を意識します。
-またこれは結果的にCodeを少なくすることにもつながります。
-
-###### Bad
-
-```html
-<p class="text no-border">Title</p>
-```
-
-```scss
-.text {
-  font-size: 18px;
-  border: 1px solid black;
-}
-
-.no-border {
-  border: 0;
-}
-```
-
-###### Good
-
-```html
-<p class="text border">Title</p>
-```
-
-```scss
-.text {
-  font-size: 18px;
-}
-
-.border {
-  border: 1px solid black;
-}
-```
-
-*/
-
+@import 'config-sample';
 @import 'core';
 @import 'foundation';
 @import 'helper';

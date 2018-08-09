@@ -3,15 +3,39 @@
 1.1 Basic
 ===
 
-### Basic
+### Basic Style
 
 #### Yu Gothic & Yu Mincho
 
-Font Familyの`Yu Gothic`と`Yu Mincho`におけるWindowsOSとMac OSのFont Weightの統一を行なっています。
+Windows OSとMac OSの`font-weight`の統一しています。
+
+```scss
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Medium');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Yu Gothic';
+  src: local('Yu Gothic Bold');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Yu Mincho';
+  src: local('Yu Mincho Medium');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Yu Mincho';
+  src: local('Yu Mincho Bold');
+  font-weight: bold;
+}
+```
 
 #### Box Sizing
-
-`height`や`width`などのPropertyの計算を行いやすくするため、すべての要素の`box-sizing`Propertyの値を`border-box`に設定しています。
 
 ```scss
 *,
@@ -23,8 +47,6 @@ Font Familyの`Yu Gothic`と`Yu Mincho`におけるWindowsOSとMac OSのFont Wei
 
 #### Image
 
-`img`要素の横幅が親要素の横幅を超えることを防ぐため、次のように調整しています。
-
 ```scss
 img {
   max-width: 100%;
@@ -33,7 +55,7 @@ img {
 
 #### Main
 
-Internet Explorer 11のために、`main`要素の`display`Propertyの値を`block`に再指定しています。
+Internet Explorer 11 に対応するために指定しています。
 
 ```scss
 main {
@@ -43,8 +65,6 @@ main {
 
 #### Table
 
-`table`要素のStyleの調整を行いやすくするため、次のように調整しています。
-
 ```scss
 table {
   border-collapse: collapse;
@@ -53,7 +73,8 @@ table {
 
 #### Form
 
-`form`関連の要素のStyleを次のように調整しています。
+プレイスホルダーのスタイルを固定し、親要素の`line-height`を継承しています。
+またグリッドシステムを利用して詳細な横幅調整を行うことを前提として、ラジオボタンやチェックボックス、ボタン以外を`display: block`、`width: 100%`に設定しています。
 
 ```scss
 button,
@@ -104,14 +125,6 @@ textarea {
   resize: vertical;
 }
 ```
-
-Style指定の要点は次の通りです。
-
-* 親要素の`line-height`Propertyの値を継承
-
-* [Layout Category](section-3.html)を利用して詳細な横幅調整を行うことを前提として、radioやcheckboxやbutton関連要素以外を`display: block`、`width: 100%`に設定
-
-* PlaceholderのStyleを固定
 
 */
 

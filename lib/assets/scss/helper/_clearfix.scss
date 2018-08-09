@@ -1,0 +1,24 @@
+/*
+===
+2.5 Clearfix
+===
+
+### Clearfix Mixin
+
+Floatを解除するためのClearfixを適用します。
+
+```scss
+div {
+  @include clearfix;
+}
+```
+
+*/
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

@@ -1,0 +1,21 @@
+/*
+===
+2.7 List
+===
+
+### List Mixin
+
+ユーザーエージェントで指定されている`ol`、`ul`要素のスタイルをリセットします。
+
+```scss
+ol, ul {
+  @include list;
+}
+```
+
+*/
+
+@mixin list {
+  list-style: none;
+  padding-left: 0;
+}

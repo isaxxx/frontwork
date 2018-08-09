@@ -1,157 +1,247 @@
 /*
 ===
-0.3 How to use Media Query
+0.1 Coding Rules
 ===
 
-### How to use Media Query
+### Coding Rules
 
-Frontwork CSSには、CSS3 Media Queryを効率良く記述するためのMixinが用意されています。
-Mixin内で利用できる`$query`変数が[_config.scss](index.html#0.2)の`$break-point-list`変数の値に列挙するBreak Pointの順番に相当します。
+Frontwork CSSにはいくつかのコーディングルールがあり、そのルールを遵守することを推奨します。
 
-Frontwork CSSでは`@if`制御構文を利用して`$query`変数で分岐し、Styleを記述することが推奨されます。
-また`$query`変数は[JavaScript](section-5.html)の引数になることがあり、Frontwork CSSではBreak PointごとのStyleを`$query`変数の値で制御するという考え方が重要になります。
+#### Categorize
+
+[SMACSS](https://smacss.com/)を応用し、機能や振る舞いに応じたカテゴライズを行なっています。
+それぞれのカテゴリーを組み合わせてスタイル設計を行います。
+Frontwork CSSはApplicationカテゴリー以外を生成するため、Applicationカテゴリーの開発に注力することができます。
+
+##### Foundation Category
+
+ユーザーエージェントごとのスタイルのリセットや初期化、各要素の基礎的なスタイルを定義しています。
+
+##### Helper Category
+
+Text Alignなど、小規模な振る舞いを追加するための補助的な役割を持つスタイルを定義しています。
+Applicationカテゴリーのスタイル指定の肥大化を防ぐ目的で利用します。
+クラス名は、`h-`プレフィックスに続いて、振る舞い示す2文字の略称から成ります。
+
+##### Layout Category
+
+ページ全体のレイアウトを構築するためのスタイルを定義しています。
+クラス名は、`l-`プレフィックスに続いて、レイアウトの種別を示す2文字の略称とElementとModifierから成ります。
+またModifierの`@`の文字の後に続く数字は、[Media Query Mixin](#link-3)昇順の`$query`変数の値で、ブレイクポイントごとに振る舞いが変化することを示しています。
+
+##### JavaScript Category
+
+JavaScriptの制御に利用するスタイルを定義しています。
+クラス名には、`js-`プレフィックスを付与します。
+
+##### State Category
+
+要素の状態を示すスタイルを定義しています。
+クラス名は、`is-current`、`is-active`、`is-disable`のように`is-`プレフィックスの後に状態を示す単語が続きます。
+単独でスタイルを設定するのではなく、必ず他のカテゴリーと合わせて利用します。
+
+##### Application Category
+
+プロジェクト固有のスタイルを定義します。
+
+ApplicationカテゴリーはさらにThemeとComponentsの2つに分けられます。
+
+###### Components
+
+汎用性が高く、再利用しやすいスタイルを定義します。
+例えば、ボタンやメディアパターン、ユーザーの入力を想定したスタイルが該当します。
+このスタイルはスタイルガイドに追記することが望ましいです。
+
+###### Theme
+
+Components以外のスタイルを定義します。
+例えばヘッダーやフッターのようなページで唯一の存在となる要素や、汎用性の低い要素が該当します。
+
+#### Naming Convention
+
+クラス名の命名規則に、[BEM](https://bem.info/)を採用しています。
+
+詳細な命名規則は次の通りです。
+すべての単語は小文字を使用し、大文字は使用せず、単語の連結には`-`を用います。
+比較的よく使う単語は略称を使用しても構いません。
+
+```html
+<div class="media-background">
+  <div class="media media--middle">
+    <div class="media__head">
+      <h1 class="media__title">Title</h1>
+    </div>
+    <p class="media__body">Body</p>
+  </div>
+</div>
+```
 
 ```scss
-$break-point-list: 768px, 980px;
-
-@include media-query-asc {
-  @if $query == 0 {
-    // no media query
-  }
-  @if $query == 1 {
-    // @media (min-width: 768px)
-  }
-  @if $query == 2 {
-    // @media (min-width: 980px)
-  }
+.media {
+  // Block
 }
-
-@include media-query-desc {
-  @if $query == 0 {
-    // no media query
-  }
-  @if $query == 1 {
-    // @media (max-width: 767px)
-  }
-  @if $query == 2 {
-    // @media (max-width: 979px)
-  }
+.media__head,
+.media__body,
+.media__title {
+  // Element
+}
+.media--middle {
+  // Modifier
+}
+.media-background {
+  // Other Block
 }
 ```
 
-#### Get Value Function
+#### Style Design
 
-Listから、Break Pointごとの値を取り出すことができる関数が用意されています。
-この関数を使って、例えばFrontwork CSSの内部では、次のように利用しています。
+[Philip Walton](https://philipwalton.com/articles/css-architecture/)氏が述べている次の原則を意識したスタイル設計を行います。
+
+* 予測しやすい
+
+* 再利用しやすい
+
+* 保守しやすい
+
+* 拡張しやすい
+
+具体的には次のルールに従います。
+
+##### Element Selector
+
+要素セレクターの利用を最小限にし、HTML構造の依存を低減します。
+
+##### Absolute Value
+
+絶対値の利用を最小限にします。
+
+##### Important Declaration
+
+`!important`宣言を最小限にします。
+
+##### Nest
+
+セレクターのネストは最小限にし、HTML構造の依存を低減します。
+
+```html
+<div class="media">
+  <div class="media__head">
+    Head
+  </div>
+</div>
+```
 
 ```scss
-$break-point-list: 768px, 980px;
-$root-font-size-list: 14px, 16px, 18px;
+.media .media__head {
+  // Bad
+}
 
-@include media-query-asc {
-  html {
-    font-size: get-value($root-font-size-list);
-  }
+.media__head {
+  // Good
 }
 ```
 
-結果は次のようになります。
+あまりにもModifierが増えたり、再利用性がない場合には、MixesパターンやApplicationカテゴリーのThemeを追加するなどして、ネストを深くしても構いません。
+
+```html
+<form class="form">
+  <button class="button">Button</button>
+</form>
+```
+
+###### Mixes Pattern
 
 ```scss
-html {
-  font-size: 14px;
+.form .button {
+  // Mixes Pattern
+}
+```
+
+###### Application Theme
+
+```html
+<form class="form">
+  <div class="form-left">
+    <button class="button">Button</button>
+  </div>
+</form>
+```
+
+```scss
+.form-left .button {
+  // Application Theme
+}
+```
+
+##### Common
+
+同様のコードはなるべく共通化します。
+
+```scss
+// Bad
+.sample-a {
+  font-size: 16px;
+  color: red;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.sample-b {
+  font-size: 16px;
+  color: green;
 }
 
-@media (min-width: 980px) {
-  html {
-    font-size: 18px;
-  }
+// Good
+.sample-a,
+.sample-b {
+  font-size: 16px;
+}
+
+.sample-a {
+  color: red;
+}
+
+.sample-b {
+  color: green;
+}
+```
+
+##### Cascading
+
+定義したスタイルの上書きを極力なくします。
+
+###### Bad
+
+```html
+<p class="text no-border">Title</p>
+```
+
+```scss
+.text {
+  font-size: 18px;
+  border: 1px solid black;
+}
+
+.no-border {
+  border: 0;
+}
+```
+
+###### Good
+
+```html
+<p class="text border">Title</p>
+```
+
+```scss
+.text {
+  font-size: 18px;
+}
+
+.border {
+  border: 1px solid black;
 }
 ```
 
 */
 
-/*
-===
-0.4 Iconfont
-===
-
-### Iconfont
-
-Iconfontは`./src/svg/`Directoryに設置したSVG Fileから自動生成されます。
-そのとき次のように`iconfont`Mixinの引数にSVG Fileの名称を記述すると、そのSVGをIconfontとして利用することができます。
-
-```scss
-// source -> sample.svg
-.example:before {
-  @include iconfont(sample);
-}
-```
-
-*/
-
-/*
-===
-0.5 Mixins
-===
-
-### Mixins
-
-汎用的なMixinが用意されています。
-
-#### Clearfix
-
-Floatを解除するためのClearfixを適用します。
-
-```scss
-div {
-  @include clearfix;
-}
-```
-
-#### Button Style Reset
-
-`input[type="button"]`、`button`などのButtonを示す要素のStyleをResetします。
-
-```scss
-button {
-  @include button;
-}
-```
-
-#### List
-
-User Agentで指定されている`ol`、`ul`要素のStyleをResetします。
-
-```scss
-ol, ul {
-  @include list;
-}
-```
-
-#### Ellipsis
-
-要素の横幅からはみ出した文字を省略し、Textを1行に収めます。
-
-```scss
-p {
-  @include ellipsis;
-}
-```
-
-*/
-
-@import 'core/media-query-asc';
-@import 'core/media-query-desc';
-@import 'core/get-value';
+@import 'core/media-query';
 @import 'core/cubic-bezier';
-@import 'core/clearfix';
-@import 'core/button';
-@import 'core/list';
-@import 'core/ellipsis';

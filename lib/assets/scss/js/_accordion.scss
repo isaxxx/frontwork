@@ -5,7 +5,7 @@
 
 ### Accordion
 
-Accordionを生成します。
+アコーディオンを生成します。
 
 #### HTML
 
@@ -21,7 +21,7 @@ Accordionを生成します。
 
 #### JavaScript
 
-第一引数に、Accordionを表示する最大の[Media Query Mixin](index.html#)の`$query`変数の数を指定します。
+第一引数に、アコーディオンを表示する最大の[Media Query Mixin](index.html#link-3)の`$query`変数の数を指定します。
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### SCSS
 
-`accordion__switch`ClassのStyleを補助するMixinが用意されています。
-`accordion__content`Classは任意の`$query`変数で非表示にしてください。
+`accordion__switch`クラスのスタイルを補助するMixinが用意されています。
+`accordion__content`クラスは任意の`$query`変数で非表示にしてください。
 
 ```scss
 @include media-query-desc {
@@ -56,3 +56,68 @@ document.addEventListener('DOMContentLoaded', () => {
 ```
 
 */
+
+@mixin accordion-switch (
+  $form: plus, // plus or arrow
+  $container-width: 50px, $container-height: 50px, $icon-skew: 10deg,
+  $icon-color: #323232, $icon-line-weight: 2px, $icon-size: 20px,
+  $transition-duration: .1s, $transition-timing-function: ease-in-out,
+  $toggle-class: is-open
+) {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: $container-width;
+  height: $container-height;
+
+  @if $form == plus {
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      background-color: $icon-color;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &::before {
+      width: $icon-size;
+      height: $icon-line-weight;
+    }
+
+    &::after {
+      width: $icon-line-weight;
+      height: $icon-size;
+      transition: opacity $transition-duration $transition-timing-function;
+    }
+
+    .#{$toggle-class} &::after {
+      opacity: 0;
+    }
+  } @else if $form == arrow {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: $icon-size;
+      height: $icon-size;
+      border-right: $icon-line-weight solid $icon-color;
+      border-bottom: $icon-line-weight solid $icon-color;
+      transform: rotate(45deg) skewX(- $icon-skew) skewY(- $icon-skew);
+      transition: transform $transition-duration $transition-timing-function;
+    }
+
+    .#{$toggle-class} &::before {
+      transform: rotate(225deg) skewX(- $icon-skew) skewY(- $icon-skew);
+    }
+  }
+}

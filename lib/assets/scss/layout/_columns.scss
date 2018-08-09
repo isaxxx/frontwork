@@ -3,15 +3,15 @@
 3.1 Columns
 ===
 
-### Columns
+### Columns Class
 
-ColumnsはLayout Categoryの中核を担っています。
-これらを利用することでPage全体のLayoutを構築することができます。
+グリッドシステムを構成するクラスです。
+これらを利用することでページ全体のレイアウトを構築することができます。
+Frontwork CSSのグリッドシステムは[BootStrap](https://getbootstrap.com/)や[Foundation](https://foundation.zurb.com/)を参考にしています。
 
 #### Site
 
 `body`要素直下の要素に使用します。
-このClassは、例えばJavaScriptを利用してPage全体にAnimationを追加する場合などに利用します。
 
 ```html
 <body>
@@ -21,7 +21,7 @@ ColumnsはLayout Categoryの中核を担っています。
 
 #### Container
 
-[_config.scss](index.html#0.2)の`$container-size-list`の設定が反映されています。
+グリッドシステムにおけるコンテナーです。
 
 ```html
 <body>
@@ -33,7 +33,7 @@ ColumnsはLayout Categoryの中核を担っています。
 
 ##### Full Size Modifier
 
-横幅を100%に設定します。
+コンテナーの横幅を100%に設定します。
 
 ```html
 <body>
@@ -45,12 +45,9 @@ ColumnsはLayout Categoryの中核を担っています。
 
 #### Row & Column
 
-RowとColumnはそれぞれを組み合わせて利用します。
-Containerの直下の要素にRowを使用し、Rowの直下の要素にColumnを使用します。
-またColumnの直下にRowを使用することで、Nestして利用することができます。
-
-RowとColumnには、[_config.scss](index.html#0.2)の`$gatter-size-list`の設定が反映されています。
-いくつかのModifierを追加することで、Layoutを詳細に形成することができます。
+グリッドシステムにおけるグリッドです。
+コンテナーの直下の要素にRowを使用し、Rowの直下の要素にColumnを使用します。
+またColumnの直下にRowを使用することで、ネストして利用することができます。
 
 ```html
 <body>
@@ -71,11 +68,9 @@ RowとColumnには、[_config.scss](index.html#0.2)の`$gatter-size-list`の設�
 </body>
 ```
 
-##### Size Modifier - Grid System (Column)
+##### Size Modifier (Column)
 
-[_config.scss](index.html#0.2)の`$grid-unit`の値が反映されたGrid Systemを利用できます。
-例えば`$grid-unit: 12`とすると、Column ClassのSize Modifierで指定する数の合計が1列で12となるようにLayoutします。
-[BootStrap](https://getbootstrap.com/)や[Foundation](https://foundation.zurb.com/)など多くのCSS Frameworkで採用されているGrid Systemとほぼ同様の仕組みです。
+グリッドシステムにおけるグリッドのサイズを指定します。
 
 ```html
 <body>
@@ -98,7 +93,7 @@ RowとColumnには、[_config.scss](index.html#0.2)の`$gatter-size-list`の設�
 
 ##### Offset Modifier (Column)
 
-Grid Systemに準じて左側、もしくは右側にOffsetを追加できます。
+左側、もしくは右側にマージンを追加します。
 
 ```html
 <body>
@@ -115,7 +110,7 @@ Grid Systemに準じて左側、もしくは右側にOffsetを追加できます
 
 ##### No Gatter Modifier (Row & Column)
 
-Gatter Sizeを削除します。
+グリッドシステムにおけるガターを削除します。
 
 ```html
 <div class="l-cn">
