@@ -1,3 +1,7 @@
+# 1.1.1 (2018-08-10)
+
+- Fix: test code
+
 # 1.1.0 (2018-08-10)
 
 - Add: Lint Function
