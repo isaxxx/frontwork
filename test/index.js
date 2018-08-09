@@ -2,7 +2,7 @@ const test = require('ava');
 const rimraf = require('rimraf');
 const frontwork = require('../index');
 
-test('init task & production task - case 001', (t) => {
+test('init task - case 001', (t) => {
   return new Promise((resolve) => {
     rimraf('./src/', () => {
       resolve();
@@ -12,12 +12,6 @@ test('init task & production task - case 001', (t) => {
       init: true,
       watch: false,
       production: false
-    });
-  }).then(() => {
-    return frontwork({
-      init: false,
-      watch: false,
-      production: true
     });
   }).then(() => {
     t.pass();
