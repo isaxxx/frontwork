@@ -7,6 +7,6 @@ branches:
     - master
 
 node_js:
-  - 6
+  - 8
 
 script: npm run test
