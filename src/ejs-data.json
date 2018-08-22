@@ -1,0 +1,27 @@
+{
+	"common": {
+		"siteName": "Sample",
+		"path": {
+			"abs": "https://example.com",
+			"js": "/assets/js",
+			"css": "/assets/css",
+			"images": "/assets/images"
+		}
+	},
+	"page": {
+		"/index.html": {
+			"title": "Home",
+			"keywords": "keywords in home",
+			"description": "description in home",
+			"bodyClass": "page-home",
+			"currentHeader": "home"
+		},
+		"/about/index.html": {
+			"title": "About",
+			"keywords": "keywords in about",
+			"description": "description in about",
+			"bodyClass": "page-about",
+			"currentHeader": "about"
+		}
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"common": {
+		"siteName": "Sample",
+		"path": {
+			"abs": "https://example.com",
+			"js": "/assets/js",
+			"css": "/assets/css",
+			"images": "/assets/images"
+		}
+	},
+	"page": {
+		"/index.html": {
+			"title": "Home",
+			"keywords": "keywords in home",
+			"description": "description in home",
+			"currentHeader": "home"
+		},
+		"/about/index.html": {
+			"title": "About",
+			"keywords": "keywords in about",
+			"description": "description in about",
+			"currentHeader": "about"
+		},
+    "/403.html": {
+      "title": "403 Forbidden",
+      "description": "申し訳ございません。指定されたURLへアクセスすることができません。アドレスが変更になっているか、削除された可能性があります。"
+    },
+    "/404.html": {
+      "title": "404 Not Found",
+      "description": "申し訳ございません。アクセスしようとしたページが見つかりませんでした。アドレスが変更になっているか、削除された可能性があります。"
+    },
+    "/500.html": {
+      "title": "500 Internal Server Error",
+      "description": "申し訳ございません。指定されたURL へアクセスすることができません。"
+    },
+    "/503.html": {
+      "title": "503 Service Temporarily Unavailable",
+      "description": "申し訳ございません。指定されたURL へアクセスすることができません。時間をおいて、再度アクセスしてください。"
+    }
+	}
+}

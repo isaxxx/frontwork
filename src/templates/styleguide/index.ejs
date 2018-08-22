@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontwork CSS Styleguide</title>
+    <meta name="format-detection" content="telephone=no, email=no, address=no" />
+    <link rel="stylesheet" href="../css/styleguide.css" />
+    <script src="../js/highlight.js"></script>
+    <script src="../js/styleguide.js"></script>
+  </head>
+  <body>
+    <div class="l-st">
+      <header class="header" role="banner">
+        <div class="l-cn">
+          <h1>Frontwork CSS Styleguide</h1>
+          <nav class="menu js-menu" id="menu" role="navigation">
+            <ul class="js-menu__container">
+              <% getSections().forEach((section) => { %>
+                <li <% if (section.sectionNumber === currentSectionNumber) { %>class="is-current"<% } %>>
+                  <a href="<%= section.link %>"><%= section.title %></a>
+                </li>
+              <% }); %>
+            </ul>
+          </nav>
+          <div class="js-menu-layer"></div>
+          <a class="js-menu-switch" href="#" aria-controls="menu" aria-label="MENU">
+            <i class="js-menu-switch__icon" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="l-cn">
+          <% getSections().forEach((section) => { %>
+            <% if (hasSubSections(section.sectionNumber) && section.sectionNumber === currentSectionNumber) { %>
+              <nav class="local-menu" role="navigation">
+                <ul>
+                  <% getSubSections(section.sectionNumber).forEach((subSection) => { %>
+                    <li>
+                      <a href="#link-<%= subSection.subSectionNumber %>"><%= subSection.title %></a>
+                    </li>
+                  <% }); %>
+                </ul>
+              </nav>
+            <% } %>
+          <% }); %>
+        </div>
+      </header>
+      <main class="main l-cn" role="main">
+        <div class="l-rw">
+          <div class="l-cl">
+            <% getContents(currentSectionNumber).forEach((item) => { %>
+              <section class="section" id="link-<%= item.subSectionNumber %>">
+                <%- item.content %>
+              </section>
+            <% }); %>
+          </div>
+        </div>
+      </main>
+      <footer class="footer" role="contentinfo">
+        <div class="l-cn">
+          <div class="l-rw">
+            <div class="l-cl">
+              <p>Developed by <a href="https://isaxxx.com/">Masahide Isaka</a></p>
+              <p>Can you make this better? Please fork it on <a href="https://github.com/isaxxx/frontwork/">Github</a></p>
+              <p>This styleguide is powered by <a href="https://www.npmjs.com/package/styleguide-lite/">Styleguide Lite</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
