@@ -1,3 +1,7 @@
+# 1.1.2 (2018-08-22)
+
+- Fix: gitignore and npmignore
+
 # 1.1.1 (2018-08-10)
 
 - Fix: test code
