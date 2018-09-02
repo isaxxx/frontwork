@@ -1,3 +1,7 @@
+# 1.1.3 (2018-09-03)
+
+- Add: WordPress Template
+
 # 1.1.2 (2018-08-22)
 
 - Fix: gitignore and npmignore
