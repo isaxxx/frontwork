@@ -11,6 +11,14 @@
 <a class="h-sr" href="#main">本文にスキップ</a>
 ```
 
+#### Display Modifier
+
+要素がフォーカスされたとき、画面に表示されるようにします。
+
+```html
+<a class="h-sr h-sr--ds" href="#main">本文にスキップ</a>
+```
+
 */
 
 .h-sr {
@@ -23,7 +31,9 @@
   white-space: nowrap;
   clip-path: inset(50%);
   border: 0;
+}
 
+.h-sr--ds {
   &:active,
   &:focus {
     position: static;

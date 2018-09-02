@@ -1,4 +1,13 @@
-<?php get_header(); ?>
+<?php
+
+/**
+ *
+ * Index
+ * @package Frontwork
+ *
+ */
+
+?><?php get_header(); ?>
 
 <main class="l-cn" role="main">
   <div class="l-rw">

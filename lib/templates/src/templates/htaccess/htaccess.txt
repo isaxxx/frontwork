@@ -1,24 +1,37 @@
+# Basic authentication
+AuthUserFile "/.htpasswd"
+AuthName "Member Site"
+AuthType BASIC
+require valid-user
+
+# Error Document
 ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
 ErrorDocument 500 /500.html
 ErrorDocument 503 /503.html
 
+# Access restriction
 <Files ~ "^\.(htaccess|htpasswd)$">
 deny from all
 </Files>
 
+# Add mime type
 <IfModule mod_mime.c>
-AddType application/vnd.ms-fontobject .eot
-AddType application/x-font-ttf .ttf
-AddType application/x-font-opentype .otf
 AddType application/x-font-woff .woff
 AddType application/x-font-woff2 .woff2
 AddType image/svg+xml .svg .svgz
 AddEncoding gzip .svgz
 </IfModule>
 
+# Enable compression
 <IfModule mod_deflate.c>
 SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|ico)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI _\.utxt$ no-gzip
+#DeflateCompressionLevel 4
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/html
 AddOutputFilterByType DEFLATE text/xml
@@ -28,41 +41,77 @@ AddOutputFilterByType DEFLATE application/xml
 AddOutputFilterByType DEFLATE application/rss+xml
 AddOutputFilterByType DEFLATE application/atom_xml
 AddOutputFilterByType DEFLATE application/x-javascript
-AddOutputFilterByType DEFLATE application/json
-AddOutputFilterByType DEFLATE application/ld+json
 AddOutputFilterByType DEFLATE application/x-httpd-php
-AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
-AddOutputFilterByType DEFLATE application/x-font-ttf
-AddOutputFilterByType DEFLATE application/x-font-opentype
-AddOutputFilterByType DEFLATE application/x-font-woff
-AddOutputFilterByType DEFLATE application/x-font-woff2
-AddOutputFilterByType DEFLATE image/svg+xml
-Header append Vary Accept-Encoding env=!dont-vary
 </IfModule>
 
-<IfModule mod_expires.c>
+# Utilize browser caching
+<ifModule mod_expires.c>
 ExpiresActive On
-ExpiresByType image/jpg "access 10 days"
-ExpiresByType image/jpeg "access 10 days"
-ExpiresByType image/gif "access 10 days"
-ExpiresByType image/png "access 10 days"
-ExpiresByType text/css "access 10 days"
+ExpiresByType text/css "access plus 15 days"
+ExpiresByType image/gif "access plus 10 days"
+ExpiresByType image/jpg "access plus 10 days"
+ExpiresByType image/jpeg "access plus 10 days"
+ExpiresByType image/png "access plus 10 days"
 ExpiresByType application/x-javascript "access plus 10 days"
-ExpiresByType text/javascript "access plus 10 days"
-ExpiresByType application/javascript "access plus 10 days"
-ExpiresByType image/x-icon "access 10 days"
-ExpiresByType application/vnd.ms-fontobject "access plus 10 days"
-ExpiresByType font/ttf "access plus 10 days"
-ExpiresByType font/otf "access plus 10 days"
-ExpiresByType font/x-woff "access plus 10 days"
-ExpiresByType font/x-woff2 "access plus 10 days"
-ExpiresByType image/svg+xml "access plus 10 days"
+ExpiresByType text/x-javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType application/x-javascript "access plus 1 month"
+ExpiresByType text/js "access plus 1 month"
+ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+</ifModule>
+
+# WordPress (Root Directory)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
 </IfModule>
 
-#https redirect
+# WordPress (Sub Directory)
 <IfModule mod_rewrite.c>
-    RewriteEngine on
-	RewriteCond %{REQUEST_URI} .*
-	RewriteCond %{HTTPS} off
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+RewriteEngine On
+RewriteBase /wp/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /wp/index.php [L]
 </IfModule>
+
+# Redirect HTTPS (WordPress)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_URI} .*
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
+# Redirect HTTPS (Remove www)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+Options +FollowSymLinks
+RewriteCond %{HTTP_HOST} ^www.isaxxx.jp
+RewriteRule ^(.*) https://isaxxx.jp/$1 [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
+# Redirect HTTPS (Add www)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+Options +FollowSymLinks
+RewriteCond %{HTTP_HOST} ^isaxxx.jp
+RewriteRule ^(.*) https://www.isaxxx.jp/$1 [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
+# Limit
+php_value memory_limit 50M
+php_value post_max_size 40M
+php_value upload_max_filesize 30M

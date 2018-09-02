@@ -1,4 +1,16 @@
+<?php
+
+/**
+ *
+ * Footer
+ * @package Frontwork
+ *
+ */
+
+?>
+      <?php get_sidebar(); ?>
       <footer class="footer" role="contentinfo">
+        <?php get_search_form(); ?>
         <p class="copyright">
           <small>&copy;&nbsp;Masahide&nbsp;Isaka</small>
         </p>

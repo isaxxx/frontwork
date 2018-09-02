@@ -10,31 +10,29 @@
 	},
 	"page": {
 		"/index.html": {
-			"title": "Home",
-			"keywords": "keywords in home",
+			"title": "Sample - description",
 			"description": "description in home",
 			"currentHeader": "home"
 		},
 		"/about/index.html": {
-			"title": "About",
-			"keywords": "keywords in about",
+			"title": "About - Sample",
 			"description": "description in about",
 			"currentHeader": "about"
 		},
     "/403.html": {
-      "title": "403 Forbidden",
+      "title": "403 Forbidden - Sample",
       "description": "申し訳ございません。指定されたURLへアクセスすることができません。アドレスが変更になっているか、削除された可能性があります。"
     },
     "/404.html": {
-      "title": "404 Not Found",
+      "title": "404 Not Found - Sample",
       "description": "申し訳ございません。アクセスしようとしたページが見つかりませんでした。アドレスが変更になっているか、削除された可能性があります。"
     },
     "/500.html": {
-      "title": "500 Internal Server Error",
+      "title": "500 Internal Server Error - Sample",
       "description": "申し訳ございません。指定されたURL へアクセスすることができません。"
     },
     "/503.html": {
-      "title": "503 Service Temporarily Unavailable",
+      "title": "503 Service Temporarily Unavailable - Sample",
       "description": "申し訳ございません。指定されたURL へアクセスすることができません。時間をおいて、再度アクセスしてください。"
     }
 	}
