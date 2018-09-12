@@ -1,3 +1,7 @@
+# 1.1.4 (2018-09-12)
+
+- Fix: EJS Template
+
 # 1.1.3 (2018-09-03)
 
 - Add: WordPress Template
