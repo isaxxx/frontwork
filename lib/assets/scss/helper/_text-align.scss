@@ -15,6 +15,20 @@
 
 */
 
+@include media-query-asc {
+  .h-tc\@#{$query} {
+    text-align: center !important;
+  }
+
+  .h-tl\@#{$query} {
+    text-align: left !important;
+  }
+
+  .h-tr\@#{$query} {
+    text-align: right !important;
+  }
+}
+
 .h-tc {
   text-align: center !important;
 }
@@ -24,5 +38,17 @@
 }
 
 .h-tr {
+  text-align: right !important;
+}
+
+.aligncenter {
+  text-align: center !important;
+}
+
+.alignleft {
+  text-align: left !important;
+}
+
+.alignright {
   text-align: right !important;
 }

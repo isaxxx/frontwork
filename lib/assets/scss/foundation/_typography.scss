@@ -49,6 +49,10 @@ ol, ul {
   h6 {
     font-size: get-value($h6-font-size-list);
   }
+
+  p {
+    font-size: get-value($root-font-size-list);
+  }
 }
 
 h1,

@@ -1,0 +1,34 @@
+/*
+===
+2.1 Display
+===
+
+### Display Class
+
+文字の揃えの方向を中央揃え、左揃え、もしくは右揃えにします。
+
+```html
+<div class="h-tc">Text Align Center</div>
+<div class="h-tl">Text Align Left</div>
+<div class="h-tr">Text Align Right</div>
+```
+
+*/
+
+.h-bl {
+  display: block !important;
+}
+
+.h-nn {
+  display: none !important;
+}
+
+@include media-query-asc {
+  .h-bl\@#{$query} {
+    display: block !important;
+  }
+
+  .h-nn\@#{$query} {
+    display: none !important;
+  }
+}

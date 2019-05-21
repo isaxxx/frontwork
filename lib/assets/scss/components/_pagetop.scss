@@ -1,0 +1,48 @@
+/*<a class="pagetop" href="#top" aria-label="ページトップへ移動"></a>*/
+@include media-query-asc {
+  @if $query == 0 {
+    .c-pagetop {
+      display: block;
+      position: fixed;
+      right: 1em;
+      bottom: 1em;
+      width: 2em;
+      height: 2em;
+      background-color: $base-color;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      line-height: 2em;
+      font-size: 1rem;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate3d(0, 0, 0);
+      z-index: 1000;
+      transition: opacity .5s ease-in-out, visibility 0s step-end .5s, background-color .1s ease-in-out;
+
+      &::before {
+        @include iconfont(arrow-top);
+        display: block;
+      }
+    }
+
+    body.is-pagetop-fixed {
+      .c-pagetop {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity .5s ease-in-out, visibility 0s step-start 0s, background-color .1s ease-in-out;
+      }
+    }
+  }
+
+  @if $query == 1 {
+    .c-pagetop {
+      font-size: 1.5rem;
+
+      &:hover {
+        background-color: rgba($base-color, .7);
+      }
+    }
+  }
+}

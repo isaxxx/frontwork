@@ -185,6 +185,7 @@ Flexible Itemの表示順の優先順位を指定します。
 
 .l-st,
 .l-cn,
+.l-ed,
 .l-rw,
 .l-cl {
   display: block;
@@ -197,9 +198,18 @@ Flexible Itemの表示順の優先順位を指定します。
   @include clearfix;
 }
 
-.l-cn {
+.l-cn,
+.l-ed > * {
   margin-left: auto;
   margin-right: auto;
+}
+
+.l-ed > .l-ed__rs {
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .l-cl {
@@ -207,25 +217,91 @@ Flexible Itemの表示順の優先順位を指定します。
   float: left;
 }
 
+.l-ed > * {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.editor-block-list__block-edit.block-editor-block-list__block-edit,
+.editor-block-list__layout.block-editor-block-list__layout {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.wp-block .wp-block {
+  width: 100% !important;
+}
+
+.wp-block,
+.wp-block .l-cn {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
 @include media-query-asc {
   .l-st {
     @if unit(get-value($container-size-list)) == 'px' {
       min-width: get-value($container-size-list);
-    } @else if unit(get-value($container-min-size-list)) == 'px' {
+    } @else if get-value($container-min-size-list) == 0 or unit(get-value($container-min-size-list)) == 'px' {
       min-width: get-value($container-min-size-list);
-    } @else if get-value($container-max-size-list) != 'none' and unit(get-value($container-max-size-list)) == 'px' {
-      min-width: get-value($container-max-size-list);
     } @else {
       min-width: 0;
     }
   }
 
   .l-cn {
-    width: get-value($container-size-list);
-    min-width: get-value($container-min-size-list);
-    max-width: get-value($container-max-size-list);
+    width: get-value($container-size-list) !important;
+    min-width: get-value($container-min-size-list) !important;
+    max-width: get-value($container-max-size-list) !important;
     padding-right: get-value($gatter-size-list);
     padding-left: get-value($gatter-size-list);
+  }
+
+  $current-container-size: get-value($container-size-list);
+  $current-container-min-size: get-value($container-min-size-list);
+  $current-container-max-size: get-value($container-max-size-list);
+  $current-gatter-size: get-value($gatter-size-list) * 2;
+
+  .wp-block,
+  .wp-block .l-cn {
+    @if $current-container-size == auto {
+      width: calc(100% - #{$current-gatter-size}) !important;
+    } @else {
+      width: calc(#{$current-container-size} - #{$current-gatter-size}) !important;
+    }
+    @if $current-container-min-size == 0 {
+      min-width: 0 !important;
+    } @else {
+      min-width: calc(#{$current-container-min-size} - #{$current-gatter-size}) !important;
+    }
+    @if $current-container-max-size == none {
+      max-width: none !important;
+    } @else {
+      max-width: calc(#{$current-container-max-size} - #{$current-gatter-size}) !important;
+    }
+  }
+
+  .l-ed > * {
+    @if $current-container-size == auto {
+      width: calc(100% - #{$current-gatter-size});
+    } @else {
+      width: calc(#{$current-container-size} - #{$current-gatter-size});
+    }
+    @if $current-container-min-size == 0 {
+      min-width: 0;
+    } @else {
+      min-width: calc(#{$current-container-min-size} - #{$current-gatter-size});
+    }
+    @if $current-container-max-size == none {
+      max-width: none;
+    } @else {
+      max-width: calc(#{$current-container-max-size} - #{$current-gatter-size});
+    }
   }
 
   .l-rw {
@@ -243,13 +319,27 @@ Flexible Itemの表示順の優先順位を指定します。
 
 @include media-query-asc {
   .l-cn--fl\@#{$query} {
-    width: 100%;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  .l-cn--fl--rs\@#{$query} {
+    width: get-value($container-size-list) !important;
+    min-width: get-value($container-min-size-list) !important;
+    max-width: get-value($container-max-size-list) !important;
   }
 
   .l-rw--ng\@#{$query},
   .l-cl--ng\@#{$query} {
     padding-right: 0;
     padding-left: 0;
+  }
+
+  .l-rw--ng--rs\@#{$query},
+  .l-cl--ng--rs\@#{$query} {
+    padding-left: get-value($gatter-size-list) / 2;
+    padding-right: get-value($gatter-size-list) / 2;
   }
 
   @for $i from 1 through $grid-unit {

@@ -10,9 +10,9 @@
 #### HTML
 
 ```html
-<div class="accordion">
-<a href="#" class="accordion__switch" aria-label="TOGGLE"></a>
-<ul class="accordion__content">
+<div class="js-accordion">
+<a href="#" class="js-accordion__switch" aria-label="TOGGLE"></a>
+<ul class="js-accordion__content">
   <li>
     <a href="#">Accordion Content</a>
   </li>
@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### SCSS
 
-`accordion__switch`クラスのスタイルを補助するMixinが用意されています。
-`accordion__content`クラスは任意の`$query`変数で非表示にしてください。
+`js-accordion__switch`クラスのスタイルを補助するMixinが用意されています。
+`js-accordion__content`クラスは任意の`$query`変数で非表示にしてください。
 
 ```scss
 @include media-query-desc {
   @if $query == 0 {
-    .accordion__switch {
-      @include accordion-icon(
+    .js-accordion__switch {
+      @include accordion-switch(
         $form: plus, // plus or arrow
         $container-width: 50px, $container-height: 50px, $icon-skew: 10deg,
         $icon-color: #323232, $icon-line-weight: 2px, $icon-size: 20px,
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
     // close accordion content
-    .accordion__content {
+    .js-accordion__content {
       display: none;
     }
   }

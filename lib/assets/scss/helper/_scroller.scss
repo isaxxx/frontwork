@@ -1,0 +1,70 @@
+/*
+===
+2.10 Scroller
+===
+
+### Scroller Mixin
+
+縦方向、もしくは横方向にスクロールバーを表示します。
+
+```scss
+@include media-query-asc {
+  @if $query == 0 {
+    .scroller-x {
+      @include scroller-x;
+      width: 100%;
+    }
+
+    .scroller-x__inner {
+      width: 800px;
+    }
+
+    .scroller-y {
+      @include scroller-y;
+      width: 400px;
+    }
+
+    .scroller-y__inner {
+      height: auto;
+    }
+  }
+
+  @if $query == 1 {
+    .scroller-x {
+      @include scroller-x-reset;
+      width: auto;
+    }
+
+    .scroller-y {
+      @include scroller-y-reset;
+      width: auto;
+    }
+  }
+}
+```
+
+*/
+
+@mixin scroller-x {
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin scroller-y {
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin scroller-x-reset {
+  overflow: visible;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: scroll;
+}
+
+@mixin scroller-y-reset {
+  overflow: visible;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: scroll;
+}

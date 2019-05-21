@@ -1,0 +1,73 @@
+/*
+<div class="breadcrumb">
+  <div class="l-cn">
+    <ol class="breadcrumb__content" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a href="/" itemprop="item">
+          <span itemprop="name">ホーム</span>
+        </a>
+        <meta itemprop="position" content="1" />
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a href="/" itemprop="item">
+          <span itemprop="name">求人検索</span>
+        </a>
+        <meta itemprop="position" content="2" />
+      </li>
+    </ol>
+  </div>
+</div>
+*/
+@include media-query-asc {
+  @if $query == 0 {
+    .c-breadcrumb {
+      font-size: .77777777rem;
+      padding-top: .5em;
+      padding-bottom: .5em;
+      overflow: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .c-breadcrumb__content {
+      @include list;
+      width: 100%;
+      white-space: nowrap;
+
+      & > li {
+        display: inline-block;
+        margin-right: .5em;
+
+        &:not(:last-child)::after {
+          content: '>';
+          color: inherit;
+          margin-left: .5em;
+        }
+
+        & > a {
+          color: $base-color;
+        }
+
+        &:last-child > a {
+          text-decoration: none;
+          color: $root-font-color;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  @if $query == 1 {
+    .c-breadcrumb {
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+
+    .c-breadcrumb__content {
+      & > li > a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

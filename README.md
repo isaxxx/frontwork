@@ -29,7 +29,7 @@ Tools for Front End Web Developers Work.
 ### NPM
 
 ```bash
-$ npm install --save frontwork
+$ npm install frontwork
 ```
 
 ## Usage

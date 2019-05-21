@@ -5,7 +5,7 @@
 
 ### Margin Class
 
-上方向、もしくは下方向のマージンを削除します。
+上下左右のマージンを削除します。
 
 ```html
 <div class="h-mt">Remove Margin Top</div>
@@ -20,4 +20,138 @@
 
 .h-mb {
   margin-bottom: 0 !important;
+}
+
+@include media-query-asc {
+  .h-mb-00\@#{$query} {
+    margin-bottom: 0;
+  }
+
+  .h-mb-05\@#{$query} {
+    margin-bottom: .5em;
+  }
+
+  .h-mb-10\@#{$query} {
+    margin-bottom: 1em;
+  }
+
+  .h-mb-15\@#{$query} {
+    margin-bottom: 1.5em;
+  }
+
+  .h-mb-20\@#{$query} {
+    margin-bottom: 2em;
+  }
+
+  .h-mb-25\@#{$query} {
+    margin-bottom: 2.5em;
+  }
+
+  .h-mb-30\@#{$query} {
+    margin-bottom: 3em;
+  }
+
+  .h-mb-35\@#{$query} {
+    margin-bottom: 3.5em;
+  }
+
+  .h-mb-40\@#{$query} {
+    margin-bottom: 4em;
+  }
+
+  .h-mb-45\@#{$query} {
+    margin-bottom: 4.5em;
+  }
+
+  .h-mb-50\@#{$query} {
+    margin-bottom: 5em;
+  }
+
+  .h-mt-00\@#{$query} {
+    margin-top: 0;
+  }
+
+  .h-mt-05\@#{$query} {
+    margin-top: .5em;
+  }
+
+  .h-mt-10\@#{$query} {
+    margin-top: 1em;
+  }
+
+  .h-mt-15\@#{$query} {
+    margin-top: 1.5em;
+  }
+
+  .h-mt-20\@#{$query} {
+    margin-top: 2em;
+  }
+
+  .h-mt-25\@#{$query} {
+    margin-top: 2.5em;
+  }
+
+  .h-mt-30\@#{$query} {
+    margin-top: 3em;
+  }
+
+  .h-mt-35\@#{$query} {
+    margin-top: 3.5em;
+  }
+
+  .h-mt-40\@#{$query} {
+    margin-top: 4em;
+  }
+
+  .h-mt-45\@#{$query} {
+    margin-top: 4.5em;
+  }
+
+  .h-mt-50\@#{$query} {
+    margin-top: 5em;
+  }
+
+  .h-bx-00\@#{$query} {
+    padding: 0;
+  }
+
+  .h-bx-05\@#{$query} {
+    padding: .5em;
+  }
+
+  .h-bx-10\@#{$query} {
+    padding: 1em;
+  }
+
+  .h-bx-15\@#{$query} {
+    padding: 1.5em;
+  }
+
+  .h-bx-20\@#{$query} {
+    padding: 2em;
+  }
+
+  .h-bx-25\@#{$query} {
+    padding: 2.5em;
+  }
+
+  .h-bx-30\@#{$query} {
+    padding: 3em;
+  }
+
+  .h-bx-35\@#{$query} {
+    padding: 3.5em;
+  }
+
+  .h-bx-40\@#{$query} {
+    padding: 4em;
+  }
+
+  .h-bx-45\@#{$query} {
+    padding: 4.5em;
+  }
+
+  .h-bx-50\@#{$query} {
+    padding: 5em;
+  }
 }

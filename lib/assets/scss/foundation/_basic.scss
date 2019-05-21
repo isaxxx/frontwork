@@ -75,6 +75,7 @@ table {
 
 プレイスホルダーのスタイルを固定し、親要素の`line-height`を継承しています。
 またグリッドシステムを利用して詳細な横幅調整を行うことを前提として、ラジオボタンやチェックボックス、ボタン以外を`display: block`、`width: 100%`に設定しています。
+[設定ファイル](index.html#link-2)の`$color-placeholder`変数を利用してプレイスホルダーの文字色を指定します。
 
 ```scss
 button,
@@ -83,6 +84,7 @@ optgroup,
 select,
 textarea {
   line-height: inherit;
+  color: inherit;
 }
 
 input:not([type=file]):not([type=submit]):not([type=image]):not([type=reset]):not([type=button]):not([type=radio]):not([type=checkbox]),
@@ -98,26 +100,26 @@ textarea {
   &::placeholder-shown {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
   }
 
   &::-webkit-input-placeholder {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
   }
 
   &::-moz-placeholder {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
     opacity: 1;
   }
 
   &::-ms-input-placeholder {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
   }
 }
 
@@ -176,6 +178,7 @@ optgroup,
 select,
 textarea {
   line-height: inherit;
+  color: inherit;
 }
 
 input:not([type=file]):not([type=submit]):not([type=image]):not([type=reset]):not([type=button]):not([type=radio]):not([type=checkbox]),
@@ -191,29 +194,38 @@ textarea {
   &::placeholder-shown {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
   }
 
   &::-webkit-input-placeholder {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
   }
 
   &::-moz-placeholder {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
     opacity: 1;
   }
 
   &::-ms-input-placeholder {
     font-family: inherit;
     line-height: inherit;
-    color: #ccc;
+    color: $color-placeholder;
   }
 }
 
 textarea {
   resize: vertical;
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+dd {
+  margin-left: 0;
 }

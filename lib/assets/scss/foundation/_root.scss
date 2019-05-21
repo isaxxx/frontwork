@@ -29,7 +29,8 @@ body {
 
 @include media-query-asc {
   html {
-    font-size: get-value($root-font-size-list) / 16px * 100 * 1%;
+    // font-size: get-value($root-font-size-list) / 16px * 100 * 1%;
+    font-size: get-value($root-font-size-list);
   }
 
   body::after {

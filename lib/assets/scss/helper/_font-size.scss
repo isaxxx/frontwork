@@ -42,4 +42,24 @@
   .h-h6 {
     font-size: get-value($h5-font-size-list);
   }
+
+  .h-fs-xl {
+    font-size: get-value($extra-large-font-size-list);
+  }
+
+  .h-fs-lg {
+    font-size: get-value($large-font-size-list);
+  }
+
+  .h-fs-md {
+    font-size: get-value($root-font-size-list);
+  }
+
+  .h-fs-sm {
+    font-size: get-value($small-font-size-list);
+  }
+
+  .h-fs-xs {
+    font-size: get-value($extra-small-font-size-list);
+  }
 }

@@ -1,0 +1,112 @@
+@include media-query-asc {
+  @if $query == 0 {
+    .c-checkbox,
+    .c-radio {
+      display: inline-block;
+      margin-right: 3em;
+      margin-bottom: .5em;
+
+      input {
+        display: none;
+      }
+    }
+
+    .c-select {
+      position: relative;
+
+      &::before {
+        @include iconfont(arrow-bottom);
+        position: absolute;
+        top: 50%;
+        line-height: 0;
+        right: .5em;
+        color: $root-font-color;
+        pointer-events: none;
+      }
+
+      select {
+        background-color: $root-background-color;
+        outline: none;
+        border-radius: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: .5em 2em .5em 1em;
+        border: 1px solid $border-color;
+        margin-bottom: 5px;
+      }
+
+      select::-ms-expand {
+        display: none;
+      }
+    }
+
+    .c-text,
+    .c-textarea {
+      padding: .5em 1em;
+      border-radius: 0;
+      border: 1px solid $border-color;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .c-textarea {
+      height: 10em;
+    }
+
+    .c-checkbox__check,
+    .c-radio__check {
+      display: inline-block;
+      border: 1px solid $border-color;
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: middle;
+      margin-right: .5em;
+      background-color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .c-radio__check {
+      border-radius: 100%;
+
+      &::before {
+        content: '';
+        display: block;
+        background-color: transparent;
+        width: 50%;
+        height: 50%;
+        top: 25%;
+        left: 25%;
+        position: absolute;
+        border-radius: 100%;
+      }
+
+      input:checked + .c-radio__check {
+        background-color: rgba($border-color, .5);
+
+        &::before {
+          background-color: $root-font-color;
+        }
+      }
+    }
+
+    .c-checkbox__check {
+      &::before {
+        @include iconfont(check);
+        display: block;
+        color: transparent;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+      }
+
+      input:checked + .c-checkbox__check {
+        &::before {
+          color: $root-font-color;
+        }
+      }
+    }
+  }
+}
